@@ -1,0 +1,33 @@
+[
+  {
+    "query": "What is the BNF grammar for RAGE addresses?",
+    "expected_frame_titles": ["Grammar (BNF)", "RAGE Addressing v3 Specification"],
+    "category": "direct",
+    "notes": "Direct factual query - should be easy for both systems"
+  },
+  {
+    "query": "What happened yesterday with the parser?",
+    "expected_contains": ["frm_", "parser", "prefix"],
+    "category": "temporal",
+    "notes": "Temporal query - baseline has no time awareness"
+  },
+  {
+    "query": "What is the parent of the grammar section?",
+    "expected_frame_titles": ["RAGE Addressing v3 Specification"],
+    "category": "structural",
+    "notes": "Structural query - baseline can't traverse parent relationships"
+  },
+  {
+    "query": "Show me recent work on the OpenClaw bridge",
+    "expected_contains": ["openclaw", "bridge", "sync"],
+    "category": "temporal",
+    "notes": "Temporal + keyword - tests recent frame prioritization"
+  },
+  {
+    "query": "What are the main components of RAGE substrate?",
+    "expected_frame_titles": ["RAGE Substrate", "Architecture"],
+    "expected_contains": ["embedding", "retrieval", "graph"],
+    "category": "direct",
+    "notes": "Broad architectural query"
+  }
+]
