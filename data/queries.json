@@ -3,31 +3,372 @@
     "query": "What is the BNF grammar for RAGE addresses?",
     "expected_frame_titles": ["Grammar (BNF)", "RAGE Addressing v3 Specification"],
     "category": "direct",
+    "difficulty": "easy",
     "notes": "Direct factual query - should be easy for both systems"
   },
   {
-    "query": "What happened yesterday with the parser?",
-    "expected_contains": ["frm_", "parser", "prefix"],
-    "category": "temporal",
-    "notes": "Temporal query - baseline has no time awareness"
+    "query": "What are the valid view slices?",
+    "expected_contains": ["view", "slice", "frame", "territory"],
+    "category": "direct",
+    "difficulty": "easy",
+    "notes": "Factual query about addressing system"
   },
   {
-    "query": "What is the parent of the grammar section?",
+    "query": "How does the decay engine work?",
+    "expected_contains": ["decay", "priority", "time", "boost"],
+    "category": "direct",
+    "difficulty": "medium",
+    "notes": "Requires understanding of temporal mechanics"
+  },
+  {
+    "query": "What is SPIRAL retrieval?",
+    "expected_contains": ["spiral", "retrieval", "embedding", "graph"],
+    "category": "direct",
+    "difficulty": "medium",
+    "notes": "Core concept query"
+  },
+  {
+    "query": "What frame types are supported?",
+    "expected_contains": ["frame", "type", "note", "session", "event"],
+    "category": "direct",
+    "difficulty": "easy",
+    "notes": "Enumeration query"
+  },
+  {
+    "query": "What is the purpose of territories?",
+    "expected_contains": ["territory", "namespace", "isolation", "domain"],
+    "category": "direct",
+    "difficulty": "medium",
+    "notes": "Conceptual understanding"
+  },
+  {
+    "query": "How does embedding work in RAGE?",
+    "expected_contains": ["embedding", "vector", "similarity", "semantic"],
+    "category": "direct",
+    "difficulty": "medium",
+    "notes": "Technical mechanism"
+  },
+  {
+    "query": "What is a frame in RAGE?",
+    "expected_contains": ["frame", "node", "graph", "content"],
+    "category": "direct",
+    "difficulty": "easy",
+    "notes": "Fundamental concept"
+  },
+  {
+    "query": "What are edge types in the graph?",
+    "expected_contains": ["edge", "parent", "child", "related", "citation"],
+    "category": "direct",
+    "difficulty": "medium",
+    "notes": "Graph structure query"
+  },
+  {
+    "query": "How does the OpenClaw bridge work?",
+    "expected_contains": ["openclaw", "bridge", "sync", "session"],
+    "category": "direct",
+    "difficulty": "medium",
+    "notes": "Integration component"
+  },
+  {
+    "query": "What is the addressing v3 specification?",
     "expected_frame_titles": ["RAGE Addressing v3 Specification"],
-    "category": "structural",
-    "notes": "Structural query - baseline can't traverse parent relationships"
+    "category": "direct",
+    "difficulty": "easy",
+    "notes": "Direct spec lookup"
   },
   {
-    "query": "Show me recent work on the OpenClaw bridge",
-    "expected_contains": ["openclaw", "bridge", "sync"],
-    "category": "temporal",
-    "notes": "Temporal + keyword - tests recent frame prioritization"
+    "query": "What commands are available in the CLI?",
+    "expected_contains": ["cli", "command", "add", "query", "context"],
+    "category": "direct",
+    "difficulty": "easy",
+    "notes": "Tool usage query"
+  },
+  {
+    "query": "How do I create a new frame?",
+    "expected_contains": ["add", "create", "frame", "content"],
+    "category": "direct",
+    "difficulty": "easy",
+    "notes": "Usage instruction"
+  },
+  {
+    "query": "What is the difference between SPIRAL and baseline retrieval?",
+    "expected_contains": ["spiral", "baseline", "graph", "embedding"],
+    "category": "direct",
+    "difficulty": "hard",
+    "notes": "Comparative understanding"
   },
   {
     "query": "What are the main components of RAGE substrate?",
     "expected_frame_titles": ["RAGE Substrate", "Architecture"],
     "expected_contains": ["embedding", "retrieval", "graph"],
     "category": "direct",
+    "difficulty": "medium",
     "notes": "Broad architectural query"
+  },
+  {
+    "query": "What happened yesterday with the parser?",
+    "expected_contains": ["frm_", "parser", "prefix"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Temporal query - baseline has no time awareness"
+  },
+  {
+    "query": "What changes were made today?",
+    "expected_contains": ["today", "change", "update"],
+    "category": "temporal",
+    "difficulty": "easy",
+    "notes": "Recent activity query"
+  },
+  {
+    "query": "What bugs were fixed yesterday?",
+    "expected_contains": ["bug", "fix", "issue"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Time-scoped bug tracking"
+  },
+  {
+    "query": "What decisions were made last week?",
+    "expected_contains": ["decision", "last week"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Decision tracking over time"
+  },
+  {
+    "query": "What was discussed about embeddings recently?",
+    "expected_contains": ["embedding", "discussion"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Recent topical query"
+  },
+  {
+    "query": "What happened with the parser this week?",
+    "expected_contains": ["parser", "this week"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Weekly scope query"
+  },
+  {
+    "query": "Show me recent work on the OpenClaw bridge",
+    "expected_contains": ["openclaw", "bridge", "sync"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Temporal + keyword - tests recent frame prioritization"
+  },
+  {
+    "query": "What did I work on yesterday afternoon?",
+    "expected_contains": ["yesterday", "work"],
+    "category": "temporal",
+    "difficulty": "hard",
+    "notes": "Precise temporal query with personal context"
+  },
+  {
+    "query": "When was the addressing spec last updated?",
+    "expected_contains": ["addressing", "updated", "spec"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Update timestamp query"
+  },
+  {
+    "query": "What conversations happened today about decay?",
+    "expected_contains": ["decay", "today", "conversation"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Topic + time filter"
+  },
+  {
+    "query": "Show me all frames created this month",
+    "expected_contains": ["frame", "created", "month"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Broader time window"
+  },
+  {
+    "query": "What tests were added recently?",
+    "expected_contains": ["test", "added", "recent"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Test coverage tracking"
+  },
+  {
+    "query": "When did we start using SPIRAL?",
+    "expected_contains": ["spiral", "start", "when"],
+    "category": "temporal",
+    "difficulty": "hard",
+    "notes": "Historical timestamp"
+  },
+  {
+    "query": "What changed in the last 24 hours?",
+    "expected_contains": ["change", "24 hours"],
+    "category": "temporal",
+    "difficulty": "easy",
+    "notes": "Fixed time window"
+  },
+  {
+    "query": "Show me notes from last Monday",
+    "expected_contains": ["note", "monday"],
+    "category": "temporal",
+    "difficulty": "medium",
+    "notes": "Specific day reference"
+  },
+  {
+    "query": "What is the parent of the grammar section?",
+    "expected_frame_titles": ["RAGE Addressing v3 Specification"],
+    "category": "structural",
+    "difficulty": "easy",
+    "notes": "Structural query - baseline can't traverse parent relationships"
+  },
+  {
+    "query": "What children does the addressing spec have?",
+    "expected_contains": ["child", "section", "grammar"],
+    "category": "structural",
+    "difficulty": "easy",
+    "notes": "Child enumeration"
+  },
+  {
+    "query": "What sections are in the CLI reference?",
+    "expected_contains": ["cli", "section", "command"],
+    "category": "structural",
+    "difficulty": "easy",
+    "notes": "Document structure"
+  },
+  {
+    "query": "What's related to the context command?",
+    "expected_contains": ["context", "related", "command"],
+    "category": "structural",
+    "difficulty": "medium",
+    "notes": "Related frame traversal"
+  },
+  {
+    "query": "What territories exist?",
+    "expected_contains": ["territory", "namespace"],
+    "category": "structural",
+    "difficulty": "easy",
+    "notes": "Namespace enumeration"
+  },
+  {
+    "query": "Show me all frames linked to the architecture document",
+    "expected_contains": ["architecture", "linked", "frame"],
+    "category": "structural",
+    "difficulty": "medium",
+    "notes": "Graph traversal from hub"
+  },
+  {
+    "query": "What frames cite the embedding paper?",
+    "expected_contains": ["cite", "embedding", "paper"],
+    "category": "structural",
+    "difficulty": "medium",
+    "notes": "Citation tracking"
+  },
+  {
+    "query": "What are the siblings of this frame?",
+    "expected_contains": ["sibling", "parent", "child"],
+    "category": "structural",
+    "difficulty": "hard",
+    "notes": "Requires context + graph understanding"
+  },
+  {
+    "query": "Show me the full path to the grammar section",
+    "expected_contains": ["path", "grammar", "parent"],
+    "category": "structural",
+    "difficulty": "medium",
+    "notes": "Hierarchical path"
+  },
+  {
+    "query": "What frames have no children?",
+    "expected_contains": ["leaf", "no children", "terminal"],
+    "category": "structural",
+    "difficulty": "hard",
+    "notes": "Leaf node query"
+  },
+  {
+    "query": "What is the root frame of the substrate documentation?",
+    "expected_contains": ["root", "substrate", "documentation"],
+    "category": "structural",
+    "difficulty": "medium",
+    "notes": "Root finding"
+  },
+  {
+    "query": "How many edges connect to this frame?",
+    "expected_contains": ["edge", "connect", "count"],
+    "category": "structural",
+    "difficulty": "hard",
+    "notes": "Degree counting"
+  },
+  {
+    "query": "What frames are orphaned?",
+    "expected_contains": ["orphan", "no parent", "isolated"],
+    "category": "structural",
+    "difficulty": "hard",
+    "notes": "Orphan detection"
+  },
+  {
+    "query": "Show me the neighborhood around the decay engine frame",
+    "expected_contains": ["decay", "neighborhood", "related"],
+    "category": "structural",
+    "difficulty": "medium",
+    "notes": "Local graph exploration"
+  },
+  {
+    "query": "What frames link to both embedding and graph?",
+    "expected_contains": ["embedding", "graph", "link"],
+    "category": "structural",
+    "difficulty": "hard",
+    "notes": "Multi-constraint graph query"
+  },
+  {
+    "query": "What is the weather?",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "easy",
+    "notes": "Completely out of scope - should return empty"
+  },
+  {
+    "query": "Tell me about quantum computing",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "easy",
+    "notes": "Out of domain"
+  },
+  {
+    "query": "implementation details",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "medium",
+    "notes": "Too vague - needs context"
+  },
+  {
+    "query": "xyzabc",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "easy",
+    "notes": "Nonsense query"
+  },
+  {
+    "query": "What is the meaning of life?",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "easy",
+    "notes": "Philosophical - out of scope"
+  },
+  {
+    "query": "How do I cook pasta?",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "easy",
+    "notes": "Unrelated domain"
+  },
+  {
+    "query": "stuff",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "medium",
+    "notes": "Extremely vague"
+  },
+  {
+    "query": "What does the nonexistent_command do?",
+    "expected_contains": [],
+    "category": "negative",
+    "difficulty": "medium",
+    "notes": "Query about non-existent feature"
   }
 ]
