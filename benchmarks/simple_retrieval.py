@@ -95,7 +95,8 @@ def run_baseline_retrieval(baseline: BaselineRAG, query: str) -> tuple[List[Dict
 def run_benchmark(
     queries: List[Dict[str, Any]], 
     baseline: BaselineRAG,
-    efforts: List[str] = None
+    efforts: List[str] = None,
+    db_path: str = None
 ) -> Dict[str, Any]:
     """
     Run benchmark on all queries, testing each effort level.
@@ -131,7 +132,7 @@ def run_benchmark(
         # Run RAGE retrieval for each effort level
         for effort in efforts:
             print(f"  Running RAGE ({effort})...", end=" ", flush=True)
-            rage_frames, rage_latency = run_rage_retrieval(query, effort=effort)
+            rage_frames, rage_latency = run_rage_retrieval(query, effort=effort, db_path=db_path)
             print(f"✓ ({rage_latency:.1f}ms)")
             
             # Evaluate RAGE
@@ -298,6 +299,12 @@ def parse_args():
         default=None,
         help="Output directory for results"
     )
+    parser.add_argument(
+        "--db",
+        type=str,
+        default=None,
+        help="Path to substrate database (default: ../rage-substrate/substrate.db)"
+    )
     return parser.parse_args()
 
 
@@ -338,7 +345,7 @@ def main():
     
     # Run benchmark
     print("\nRunning benchmark...")
-    results = run_benchmark(queries, baseline, efforts=efforts)
+    results = run_benchmark(queries, baseline, efforts=efforts, db_path=args.db)
     
     # Print summary
     print_summary_table(results)
