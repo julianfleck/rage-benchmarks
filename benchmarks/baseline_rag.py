@@ -16,10 +16,10 @@ if RAGE_SUBSTRATE_PATH.exists():
     sys.path.insert(0, str(RAGE_SUBSTRATE_PATH))
 
 try:
-    from rage.db import get_db
+    from rage_substrate.core.db import SubstrateDB
 except ImportError:
-    print("Warning: Could not import rage.db - baseline will use mock data", file=sys.stderr)
-    get_db = None
+    print("Warning: Could not import rage_substrate.core.db - baseline will use mock data", file=sys.stderr)
+    SubstrateDB = None
 
 
 class BaselineRAG:
@@ -41,7 +41,15 @@ class BaselineRAG:
         """
         self.chunk_size = chunk_size
         self.embedding_model = embedding_model
-        self.client = OpenAI(api_key=api_key or os.getenv("OPENAI_API_KEY"))
+        
+        # Use OpenRouter API if OPENAI_API_KEY not set
+        api_key = api_key or os.getenv("OPENAI_API_KEY") or os.getenv("OPENROUTER_API_KEY")
+        base_url = None
+        if os.getenv("OPENROUTER_API_KEY") and not os.getenv("OPENAI_API_KEY"):
+            base_url = "https://openrouter.ai/api/v1"
+            self.embedding_model = "openai/text-embedding-3-small"
+        
+        self.client = OpenAI(api_key=api_key, base_url=base_url)
         
         self.chunks: List[Dict[str, Any]] = []
         self.embeddings: np.ndarray = None
@@ -73,19 +81,30 @@ class BaselineRAG:
         
         return chunks
     
-    def load_from_rage_db(self):
+    def load_from_rage_db(self, db_path: str = None):
         """Load all frames from RAGE database and chunk them."""
-        if get_db is None:
+        if SubstrateDB is None:
             print("Warning: RAGE db not available, using empty corpus", file=sys.stderr)
             return
         
-        db = get_db()
-        cursor = db.execute("SELECT fid, title, content FROM frames WHERE deleted_at IS NULL")
-        frames = cursor.fetchall()
+        if db_path is None:
+            db_path = str(Path(__file__).parent.parent.parent / "rage-substrate" / "substrate.db")
+        
+        import sqlite3
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.execute("SELECT id, title, content, summary FROM frames LIMIT 10000")
+        rows = cursor.fetchall()
+        frames = [dict(row) for row in rows]
+        conn.close()
         
         print(f"Loading {len(frames)} frames from RAGE database...", file=sys.stderr)
         
-        for fid, title, content in frames:
+        for frame in frames:
+            fid = frame.get("id", "")
+            title = frame.get("title", "")
+            content = frame.get("content", "") or frame.get("summary", "")
+            
             # Combine title and content
             full_text = f"{title}\n\n{content}"
             
