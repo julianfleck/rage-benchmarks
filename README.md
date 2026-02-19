@@ -81,6 +81,75 @@ The vanilla RAG baseline (`benchmarks/baseline_rag.py`):
 - Returns top-k by cosine similarity
 - No temporal filtering, no graph traversal, no context fusion
 
+## LoCoMo Benchmark
+
+**LoCoMo** (Long-Context Conversation Memory) tests QA over multi-session conversations.
+This benchmark measures how well RAGE retrieval + LLM answering handles:
+
+| Category | Description | Example |
+|----------|-------------|---------|
+| single-hop | Direct factual lookup | "What is Caroline's identity?" |
+| temporal | Time-based queries | "When did Melanie go to the museum?" |
+| commonsense | Inference required | "Would Caroline pursue writing as a career?" |
+| multi-hop | Combining multiple facts | "What activities has Melanie done with her family?" |
+| adversarial | Potentially unanswerable | "What are Melanie's plans for adoption?" |
+
+### Setup
+
+```bash
+# Data is included in data/locomo/locomo10.json
+# (10 conversations, ~2000 QA pairs)
+
+# First, ingest the conversations into a RAGE substrate:
+python -m benchmarks.locomo_ingest --fresh
+
+# This creates data/locomo/locomo_substrate.db
+```
+
+### Running the Benchmark
+
+```bash
+# Run full benchmark (all categories)
+python -m benchmarks.locomo_benchmark
+
+# Run with limited questions (for testing)
+python -m benchmarks.locomo_benchmark --limit 20
+
+# Run specific categories only
+python -m benchmarks.locomo_benchmark --categories 1,2  # single-hop + temporal
+
+# Use different LLM
+python -m benchmarks.locomo_benchmark --model "openai/gpt-4o"
+
+# Verbose mode (shows tool calls and comparisons)
+python -m benchmarks.locomo_benchmark --limit 10 -v
+```
+
+### Metrics
+
+- **F1 Score**: Token-level overlap between predicted and ground truth answer
+- **Exact Match (EM)**: Binary 1/0 if normalized answers match exactly
+
+Results are broken down by category and saved to `results/locomo_benchmark_*.json`.
+
+### Expected Output
+
+```
+Category        |  Count |   Avg F1 |   Avg EM
+----------------|--------|----------|----------
+single-hop      |    282 |    0.650 |    0.350
+temporal        |    321 |    0.580 |    0.280
+commonsense     |     96 |    0.420 |    0.150
+multi-hop       |    841 |    0.550 |    0.220
+adversarial     |    446 |    0.380 |    0.120
+----------------|--------|----------|----------
+OVERALL         |   1986 |    0.520 |    0.230
+```
+
+### Data Source
+
+LoCoMo dataset from [snap-research/locomo](https://github.com/snap-research/locomo).
+
 ## Future Work
 
 - [ ] Add more query categories (multi-hop, negation, etc.)
@@ -88,6 +157,7 @@ The vanilla RAG baseline (`benchmarks/baseline_rag.py`):
 - [ ] Add retrieval latency percentiles (p50, p95, p99)
 - [ ] Compare different embedding models
 - [ ] Add ablation tests (RAGE without temporal, RAGE without traversal, etc.)
+- [ ] Compare RAGE vs baseline RAG on LoCoMo
 
 ## License
 
