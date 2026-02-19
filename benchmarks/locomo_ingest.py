@@ -139,6 +139,13 @@ def ingest_to_rage(
     - Session frames as children of conversation
     - Message frames for each turn as children of session
     
+    Uses the RAGE 'add' tool which supports:
+    - content: The main text content
+    - title: Optional title
+    - parent_id: Parent frame for hierarchy
+    - frame_type: Type of frame
+    - slots: Metadata dict
+    
     Returns stats dict.
     """
     stats = {
@@ -151,14 +158,25 @@ def ingest_to_rage(
     for item_idx, item in enumerate(data):
         sample_id = item.get("sample_id", f"conv_{item_idx}")
         
+        # Get speaker names for conversation description
+        conv_data = item.get("conversation", {})
+        speaker_a = conv_data.get("speaker_a", "Speaker A")
+        speaker_b = conv_data.get("speaker_b", "Speaker B")
+        
         # Create conversation container
-        conv_frame = substrate.tools.execute_sync("create", {
-            "title": f"LoCoMo Conversation: {sample_id}",
-            "content": f"Conversation from LoCoMo benchmark dataset (sample_id: {sample_id})",
-            "type": "container",
-            "metadata": {
+        conv_content = f"LoCoMo Conversation: {sample_id}\n\nConversation between {speaker_a} and {speaker_b} from the LoCoMo benchmark dataset."
+        
+        conv_frame = substrate.tools.execute_sync("add", {
+            "content": conv_content,
+            "title": f"LoCoMo: {sample_id}",
+            "frame_type": "container",
+            "territory": "locomo",
+            "decompose": False,
+            "slots": {
                 "locomo_sample_id": sample_id,
-                "qa_count": len(item.get("qa", []))
+                "qa_count": len(item.get("qa", [])),
+                "speaker_a": speaker_a,
+                "speaker_b": speaker_b
             }
         })
         
@@ -166,7 +184,19 @@ def ingest_to_rage(
             print(f"Failed to create conversation frame: {conv_frame.error}", file=sys.stderr)
             continue
         
-        conv_fid = conv_frame.data.get("fid")
+        # Get the frame ID from the result (RAGE returns 'id' field)
+        conv_fid = None
+        if conv_frame.data:
+            conv_fid = conv_frame.data.get("id") or conv_frame.data.get("fid")
+            if not conv_fid and "frames" in conv_frame.data:
+                frames = conv_frame.data["frames"]
+                if frames:
+                    conv_fid = frames[0].get("id") or frames[0].get("fid")
+        
+        if not conv_fid:
+            print(f"Warning: Could not get frame ID for conversation {sample_id}", file=sys.stderr)
+            continue
+            
         stats["conversations"] += 1
         
         if verbose:
@@ -180,21 +210,29 @@ def ingest_to_rage(
             date_str = session["date_str"]
             dt = session["date_time"]
             
-            # Create session frame
-            session_content = f"Session {session['session_num']} between {session['speaker_a']} and {session['speaker_b']}"
+            # Create session frame with conversation transcript
+            session_content = f"Session {session['session_num']} between {speaker_a} and {speaker_b}"
             if date_str:
                 session_content += f" on {date_str}"
+            session_content += "\n\n"
             
-            session_frame = substrate.tools.execute_sync("create", {
-                "title": f"{sample_id} - Session {session['session_num']}",
+            # Include full transcript in session for better retrieval
+            for turn in session["turns"]:
+                speaker = turn.get("speaker", "Unknown")
+                text = turn.get("text", "")
+                session_content += f"{speaker}: {text}\n"
+            
+            session_frame = substrate.tools.execute_sync("add", {
                 "content": session_content,
-                "type": "container",
-                "parent": conv_fid,
-                "timestamp": dt.isoformat() if dt else None,
-                "metadata": {
+                "title": f"{sample_id} - Session {session['session_num']}",
+                "frame_type": "session",
+                "parent_id": conv_fid,
+                "decompose": False,
+                "slots": {
                     "locomo_session": session_id,
                     "date_str": date_str,
-                    "turn_count": len(session["turns"])
+                    "turn_count": len(session["turns"]),
+                    "timestamp": dt.isoformat() if dt else None
                 }
             })
             
@@ -202,30 +240,39 @@ def ingest_to_rage(
                 print(f"Failed to create session frame: {session_frame.error}", file=sys.stderr)
                 continue
             
-            session_fid = session_frame.data.get("fid")
+            # Get session frame ID (RAGE returns 'id' field)
+            session_fid = None
+            if session_frame.data:
+                session_fid = session_frame.data.get("id") or session_frame.data.get("fid")
+                if not session_fid and "frames" in session_frame.data:
+                    frames = session_frame.data["frames"]
+                    if frames:
+                        session_fid = frames[0].get("id") or frames[0].get("fid")
+            
             stats["sessions"] += 1
             
-            # Create message frames for each turn
+            # Create individual message frames for fine-grained retrieval
             for turn in session["turns"]:
                 speaker = turn.get("speaker", "Unknown")
                 dia_id = turn.get("dia_id", "")
                 text = turn.get("text", "")
                 
-                msg_frame = substrate.tools.execute_sync("create", {
+                msg_frame = substrate.tools.execute_sync("add", {
+                    "content": f"{speaker}: {text}",
                     "title": f"[{dia_id}] {speaker}",
-                    "content": text,
-                    "type": "message",
-                    "parent": session_fid,
-                    "timestamp": dt.isoformat() if dt else None,
-                    "metadata": {
+                    "frame_type": "message",
+                    "parent_id": session_fid if session_fid else conv_fid,
+                    "decompose": False,
+                    "slots": {
                         "locomo_dia_id": dia_id,
-                        "speaker": speaker
+                        "speaker": speaker,
+                        "timestamp": dt.isoformat() if dt else None
                     }
                 })
                 
                 if msg_frame.success:
                     stats["messages"] += 1
-                else:
+                elif verbose:
                     print(f"Failed to create message frame: {msg_frame.error}", file=sys.stderr)
         
         # Count QA pairs

@@ -164,19 +164,23 @@ Keep answers brief and factual. Do not include tool calls in your final answer."
         
         self.client = OpenAI(api_key=api_key, base_url=base_url)
         
-        # Define tools for the LLM
+        # Define tools for the LLM (matching RAGE substrate tools)
         self.tools = [
             {
                 "type": "function",
                 "function": {
-                    "name": "search",
-                    "description": "Search the conversation memory for relevant information",
+                    "name": "find",
+                    "description": "Semantic search across the conversation memory. Returns frames ranked by similarity.",
                     "parameters": {
                         "type": "object",
                         "properties": {
                             "query": {
                                 "type": "string",
                                 "description": "Search query"
+                            },
+                            "limit": {
+                                "type": "integer",
+                                "description": "Max results to return (default: 10)"
                             }
                         },
                         "required": ["query"]
@@ -187,18 +191,18 @@ Keep answers brief and factual. Do not include tool calls in your final answer."
                 "type": "function",
                 "function": {
                     "name": "context",
-                    "description": "Get contextual information with specified retrieval effort",
+                    "description": "Assemble context for a topic using SPIRAL retrieval. Use for comprehensive information gathering.",
                     "parameters": {
                         "type": "object",
                         "properties": {
                             "query": {
                                 "type": "string",
-                                "description": "Query to get context for"
+                                "description": "Topic or question to get context for"
                             },
                             "effort": {
                                 "type": "string",
                                 "enum": ["low", "medium", "high"],
-                                "description": "Retrieval effort level"
+                                "description": "Retrieval effort level (higher = more thorough)"
                             }
                         },
                         "required": ["query"]
@@ -209,16 +213,15 @@ Keep answers brief and factual. Do not include tool calls in your final answer."
     
     def _execute_tool(self, name: str, args: Dict[str, Any]) -> str:
         """Execute a RAGE tool and return result as string."""
-        if name == "search":
-            result = self.substrate.tools.execute_sync("search", {
+        if name == "find":
+            result = self.substrate.tools.execute_sync("find", {
                 "query": args.get("query", ""),
-                "limit": 10
+                "limit": args.get("limit", 10)
             })
         elif name == "context":
             result = self.substrate.tools.execute_sync("context", {
                 "query": args.get("query", ""),
-                "effort": args.get("effort", "medium"),
-                "limit": 10
+                "effort": args.get("effort", "medium")
             })
         else:
             return f"Unknown tool: {name}"
