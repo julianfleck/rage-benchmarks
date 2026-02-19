@@ -1,360 +1,167 @@
-"""LoCoMo data ingestion: Convert LoCoMo conversations to RAGE frames."""
+#!/usr/bin/env python3
+"""
+LoCoMo ingestion script - hardened version with automatic embedding generation.
+
+Usage:
+    python -m benchmarks.locomo_ingest --conversation 0 --fresh
+    python -m benchmarks.locomo_ingest --all --fresh
+"""
 
 import sys
-import json
 import argparse
+import logging
 from pathlib import Path
 from datetime import datetime
-from typing import List, Dict, Any, Optional
 
 # Add rage-substrate to path
 RAGE_SUBSTRATE_PATH = Path(__file__).parent.parent.parent / "rage-substrate"
 if RAGE_SUBSTRATE_PATH.exists():
     sys.path.insert(0, str(RAGE_SUBSTRATE_PATH))
 
-try:
-    from rage_substrate.core.substrate import Substrate
-except ImportError:
-    print("Error: Could not import rage_substrate", file=sys.stderr)
-    print("Make sure rage-substrate is installed or in ../rage-substrate", file=sys.stderr)
-    sys.exit(1)
+from benchmarks.locomo_connector import LoCoMoConnector
 
-
-# LoCoMo category mapping
-CATEGORY_NAMES = {
-    1: "single-hop",
-    2: "temporal", 
-    3: "commonsense",
-    4: "multi-hop",
-    5: "adversarial"
-}
-
-
-def parse_locomo_date(date_str: str) -> Optional[datetime]:
-    """
-    Parse LoCoMo date format like '1:56 pm on 8 May, 2023'.
-    
-    Returns datetime or None if parsing fails.
-    """
-    if not date_str:
-        return None
-    
-    # Common formats in LoCoMo
-    formats = [
-        "%I:%M %p on %d %B, %Y",  # "1:56 pm on 8 May, 2023"
-        "%I:%M %p on %B %d, %Y",  # "1:56 pm on May 8, 2023"
-        "%d %B, %Y",              # "8 May, 2023"
-        "%B %d, %Y",              # "May 8, 2023"
-    ]
-    
-    for fmt in formats:
-        try:
-            return datetime.strptime(date_str, fmt)
-        except ValueError:
-            continue
-    
-    # Fallback: try to extract year at least
-    import re
-    year_match = re.search(r'\d{4}', date_str)
-    if year_match:
-        try:
-            # Use middle of year as approximation
-            return datetime(int(year_match.group()), 6, 15)
-        except:
-            pass
-    
-    return None
-
-
-def load_locomo_data(data_path: Path = None) -> List[Dict[str, Any]]:
-    """Load LoCoMo dataset from JSON file."""
-    if data_path is None:
-        data_path = Path(__file__).parent.parent / "data" / "locomo" / "locomo10.json"
-    
-    with open(data_path) as f:
-        return json.load(f)
-
-
-def extract_conversations(item: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """
-    Extract session conversations from a LoCoMo item.
-    
-    Returns list of sessions, each with:
-        - session_id: str
-        - date_time: datetime or None
-        - date_str: original date string
-        - speaker_a: str
-        - speaker_b: str
-        - turns: list of turn dicts
-    """
-    conv = item.get("conversation", {})
-    speaker_a = conv.get("speaker_a", "Speaker A")
-    speaker_b = conv.get("speaker_b", "Speaker B")
-    
-    sessions = []
-    
-    # Find all session keys
-    session_nums = set()
-    for key in conv.keys():
-        if key.startswith("session_") and not key.endswith("_date_time"):
-            try:
-                num = int(key.split("_")[1])
-                session_nums.add(num)
-            except (IndexError, ValueError):
-                continue
-    
-    for num in sorted(session_nums):
-        session_key = f"session_{num}"
-        date_key = f"session_{num}_date_time"
-        
-        turns = conv.get(session_key, [])
-        date_str = conv.get(date_key, "")
-        
-        if not turns:
-            continue
-        
-        sessions.append({
-            "session_id": session_key,
-            "session_num": num,
-            "date_str": date_str,
-            "date_time": parse_locomo_date(date_str),
-            "speaker_a": speaker_a,
-            "speaker_b": speaker_b,
-            "turns": turns
-        })
-    
-    return sessions
-
-
-def ingest_to_rage(
-    data: List[Dict[str, Any]],
-    substrate: Substrate,
-    verbose: bool = False
-) -> Dict[str, Any]:
-    """
-    Ingest LoCoMo conversations into RAGE substrate.
-    
-    Creates:
-    - Container frame for each conversation
-    - Session frames as children of conversation
-    - Message frames for each turn as children of session
-    
-    Uses the RAGE 'add' tool which supports:
-    - content: The main text content
-    - title: Optional title
-    - parent_id: Parent frame for hierarchy
-    - frame_type: Type of frame
-    - slots: Metadata dict
-    
-    Returns stats dict.
-    """
-    stats = {
-        "conversations": 0,
-        "sessions": 0,
-        "messages": 0,
-        "qa_pairs": 0
-    }
-    
-    for item_idx, item in enumerate(data):
-        sample_id = item.get("sample_id", f"conv_{item_idx}")
-        
-        # Get speaker names for conversation description
-        conv_data = item.get("conversation", {})
-        speaker_a = conv_data.get("speaker_a", "Speaker A")
-        speaker_b = conv_data.get("speaker_b", "Speaker B")
-        
-        # Create conversation container
-        conv_content = f"LoCoMo Conversation: {sample_id}\n\nConversation between {speaker_a} and {speaker_b} from the LoCoMo benchmark dataset."
-        
-        conv_frame = substrate.tools.execute_sync("add", {
-            "content": conv_content,
-            "title": f"LoCoMo: {sample_id}",
-            "frame_type": "container",
-            "territory": "locomo",
-            "decompose": False,
-            "slots": {
-                "locomo_sample_id": sample_id,
-                "qa_count": len(item.get("qa", [])),
-                "speaker_a": speaker_a,
-                "speaker_b": speaker_b
-            }
-        })
-        
-        if not conv_frame.success:
-            print(f"Failed to create conversation frame: {conv_frame.error}", file=sys.stderr)
-            continue
-        
-        # Get the frame ID from the result (RAGE returns 'id' field)
-        conv_fid = None
-        if conv_frame.data:
-            conv_fid = conv_frame.data.get("id") or conv_frame.data.get("fid")
-            if not conv_fid and "frames" in conv_frame.data:
-                frames = conv_frame.data["frames"]
-                if frames:
-                    conv_fid = frames[0].get("id") or frames[0].get("fid")
-        
-        if not conv_fid:
-            print(f"Warning: Could not get frame ID for conversation {sample_id}", file=sys.stderr)
-            continue
-            
-        stats["conversations"] += 1
-        
-        if verbose:
-            print(f"Created conversation {sample_id} ({conv_fid})")
-        
-        # Extract and ingest sessions
-        sessions = extract_conversations(item)
-        
-        for session in sessions:
-            session_id = session["session_id"]
-            date_str = session["date_str"]
-            dt = session["date_time"]
-            
-            # Create session frame with conversation transcript
-            session_content = f"Session {session['session_num']} between {speaker_a} and {speaker_b}"
-            if date_str:
-                session_content += f" on {date_str}"
-            session_content += "\n\n"
-            
-            # Include full transcript in session for better retrieval
-            for turn in session["turns"]:
-                speaker = turn.get("speaker", "Unknown")
-                text = turn.get("text", "")
-                session_content += f"{speaker}: {text}\n"
-            
-            session_frame = substrate.tools.execute_sync("add", {
-                "content": session_content,
-                "title": f"{sample_id} - Session {session['session_num']}",
-                "frame_type": "session",
-                "parent_id": conv_fid,
-                "decompose": False,
-                "slots": {
-                    "locomo_session": session_id,
-                    "date_str": date_str,
-                    "turn_count": len(session["turns"]),
-                    "timestamp": dt.isoformat() if dt else None
-                }
-            })
-            
-            if not session_frame.success:
-                print(f"Failed to create session frame: {session_frame.error}", file=sys.stderr)
-                continue
-            
-            # Get session frame ID (RAGE returns 'id' field)
-            session_fid = None
-            if session_frame.data:
-                session_fid = session_frame.data.get("id") or session_frame.data.get("fid")
-                if not session_fid and "frames" in session_frame.data:
-                    frames = session_frame.data["frames"]
-                    if frames:
-                        session_fid = frames[0].get("id") or frames[0].get("fid")
-            
-            stats["sessions"] += 1
-            
-            # Create individual message frames for fine-grained retrieval
-            for turn in session["turns"]:
-                speaker = turn.get("speaker", "Unknown")
-                dia_id = turn.get("dia_id", "")
-                text = turn.get("text", "")
-                
-                msg_frame = substrate.tools.execute_sync("add", {
-                    "content": f"{speaker}: {text}",
-                    "title": f"[{dia_id}] {speaker}",
-                    "frame_type": "message",
-                    "parent_id": session_fid if session_fid else conv_fid,
-                    "decompose": False,
-                    "slots": {
-                        "locomo_dia_id": dia_id,
-                        "speaker": speaker,
-                        "timestamp": dt.isoformat() if dt else None
-                    }
-                })
-                
-                if msg_frame.success:
-                    stats["messages"] += 1
-                elif verbose:
-                    print(f"Failed to create message frame: {msg_frame.error}", file=sys.stderr)
-        
-        # Count QA pairs
-        stats["qa_pairs"] += len(item.get("qa", []))
-    
-    return stats
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%H:%M:%S'
+)
+log = logging.getLogger(__name__)
 
 
 def main():
-    """Ingest LoCoMo data into RAGE substrate."""
-    parser = argparse.ArgumentParser(description="Ingest LoCoMo data into RAGE")
+    parser = argparse.ArgumentParser(description="Ingest LoCoMo conversations to RAGE")
     parser.add_argument(
-        "--data", "-d",
-        type=str,
-        default=None,
-        help="Path to locomo10.json (default: data/locomo/locomo10.json)"
+        "--data", 
+        type=str, 
+        default="data/locomo/locomo10.json",
+        help="Path to locomo10.json"
     )
     parser.add_argument(
-        "--db",
-        type=str,
-        default=None,
-        help="Path to substrate database"
+        "--db", 
+        type=str, 
+        default="data/locomo/locomo_substrate.db",
+        help="Path to RAGE database"
     )
     parser.add_argument(
-        "--limit", "-l",
-        type=int,
+        "--conversation", 
+        type=int, 
         default=None,
-        help="Limit number of conversations to ingest"
+        help="Index of specific conversation to ingest (0-9)"
     )
     parser.add_argument(
-        "--verbose", "-v",
+        "--all", 
+        action="store_true",
+        help="Ingest all conversations"
+    )
+    parser.add_argument(
+        "--fresh", 
+        action="store_true",
+        help="Clear database before ingesting"
+    )
+    parser.add_argument(
+        "--skip-embeddings", 
+        action="store_true",
+        help="Skip embedding generation (faster but find/context won't work)"
+    )
+    parser.add_argument(
+        "-v", "--verbose",
         action="store_true",
         help="Verbose output"
-    )
-    parser.add_argument(
-        "--fresh",
-        action="store_true",
-        help="Delete existing database and start fresh"
     )
     
     args = parser.parse_args()
     
-    # Load data
-    data_path = Path(args.data) if args.data else None
-    print("Loading LoCoMo data...")
-    data = load_locomo_data(data_path)
+    if args.conversation is None and not args.all:
+        parser.error("Specify --conversation N or --all")
     
-    if args.limit:
-        data = data[:args.limit]
+    data_path = Path(args.data)
+    db_path = Path(args.db)
     
-    print(f"Loaded {len(data)} conversations")
+    # Ensure data directory exists
+    db_path.parent.mkdir(parents=True, exist_ok=True)
     
-    # Initialize substrate
-    if args.db:
-        db_path = args.db
-    else:
-        db_path = str(Path(__file__).parent.parent / "data" / "locomo" / "locomo_substrate.db")
+    # Clear database if --fresh
+    if args.fresh and db_path.exists():
+        print(f"🗑️  Removing existing database: {db_path}")
+        db_path.unlink()
     
-    if args.fresh:
-        import os
-        if os.path.exists(db_path):
-            os.remove(db_path)
-            print(f"Removed existing database: {db_path}")
+    print("=" * 60)
+    print("LoCoMo Ingestion")
+    print("=" * 60)
+    print(f"Data: {data_path}")
+    print(f"Database: {db_path}")
+    print()
     
-    print(f"Using database: {db_path}")
-    substrate = Substrate("locomo_benchmark", db_path=db_path)
+    start_time = datetime.now()
     
-    # Ingest
-    print("\nIngesting to RAGE substrate...")
-    stats = ingest_to_rage(data, substrate, verbose=args.verbose)
-    
-    substrate.close()
-    
-    # Print summary
-    print("\n" + "=" * 50)
-    print("INGESTION COMPLETE")
-    print("=" * 50)
-    print(f"Conversations: {stats['conversations']}")
-    print(f"Sessions:      {stats['sessions']}")
-    print(f"Messages:      {stats['messages']}")
-    print(f"QA pairs:      {stats['qa_pairs']}")
-    print(f"\nDatabase: {db_path}")
+    try:
+        connector = LoCoMoConnector(data_path, db_path)
+        
+        if args.all:
+            # Ingest all conversations
+            stats = connector.ingest_all(verbose=args.verbose)
+            print()
+            print(f"✓ Ingested {stats['conversations']} conversations")
+            print(f"  Sessions: {stats['sessions']}")
+            print(f"  Messages: {stats['messages']}")
+            print(f"  Frames: {stats['frames']}")
+        else:
+            # Ingest single conversation
+            import json
+            with open(data_path) as f:
+                data = json.load(f)
+            
+            if args.conversation < 0 or args.conversation >= len(data):
+                parser.error(f"Conversation index must be 0-{len(data)-1}")
+            
+            conv = data[args.conversation]
+            sample_id = conv.get("sample_id", f"conv_{args.conversation}")
+            
+            print(f"Ingesting conversation {args.conversation}: {sample_id}")
+            print()
+            
+            stats = connector.ingest_conversation(conv, verbose=True)
+            
+            print()
+            print(f"✓ Ingested {sample_id}")
+            print(f"  Sessions: {stats['sessions']}")
+            print(f"  Messages: {stats['messages']}")
+            print(f"  Frames: {stats['frames']}")
+        
+        # Generate embeddings unless skipped
+        if not args.skip_embeddings:
+            print()
+            print("Generating embeddings...")
+            substrate = connector._get_substrate()
+            
+            # Count frames needing embeddings
+            import sqlite3
+            conn = sqlite3.connect(db_path)
+            total = conn.execute("SELECT COUNT(*) FROM frames WHERE embedding IS NULL").fetchone()[0]
+            conn.close()
+            
+            if total > 0:
+                print(f"  {total} frames need embeddings")
+                embedded = substrate.embed_all_frames()
+                print(f"  ✓ Generated {embedded} embeddings")
+            else:
+                print("  ✓ All frames already have embeddings")
+        
+        connector.close()
+        
+        elapsed = (datetime.now() - start_time).total_seconds()
+        print()
+        print("=" * 60)
+        print(f"✓ Complete in {elapsed:.1f}s")
+        print("=" * 60)
+        
+    except KeyboardInterrupt:
+        print("\n\n⚠️  Interrupted by user")
+        sys.exit(1)
+    except Exception as e:
+        log.exception("Ingestion failed")
+        print(f"\n❌ Error: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
