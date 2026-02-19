@@ -285,6 +285,7 @@ Always give specific dates, not relative terms."""
         
         metadata = {
             "tool_calls": [{"name": "context", "args": {"query": question, "effort": effort}}],
+            "context_result": context_result if context_result else "",  # Full context for analysis
             "tokens_used": 0,
             "turns": 1,
             "mode": self.mode
@@ -494,13 +495,16 @@ def run_benchmark(
         llm_score = None if batch_judge else llm_judge(predicted, ground_truth, runner.client)
         
         # Get context from tool calls for display
-        context_preview = ""
-        for tc in meta.get("tool_calls", []):
-            if tc.get("name") == "context":
-                context_preview = f"[{tc['args'].get('effort', 'auto')}] query: {tc['args'].get('query', '')[:100]}"
-                break
+        # Get context from tool results or metadata
+        context_preview = meta.get("context_result", "")
         if not context_preview:
-            context_preview = predicted[:200] if predicted else "(no context)"
+            # Fallback: show tool call info
+            for tc in meta.get("tool_calls", []):
+                if tc.get("name") == "context":
+                    context_preview = tc.get("result", f"[{tc['args'].get('effort', 'auto')}] {tc['args'].get('query', '')[:100]}")
+                    break
+        if not context_preview:
+            context_preview = "(no context retrieved)"
         
         # Render rich panel
         panel = _render_question_panel(
@@ -527,6 +531,7 @@ def run_benchmark(
             "question": question,
             "ground_truth": ground_truth,
             "predicted": predicted,
+            "context": meta.get("context_result", ""),  # Full context sent to LLM
             "evidence": qa["evidence"],
             "category": category,
             "category_name": category_name,
