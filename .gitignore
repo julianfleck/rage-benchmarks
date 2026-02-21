@@ -22,8 +22,16 @@ wheels/
 
 # Virtual environments
 venv/
+.venv/
 env/
 ENV/
+
+# Environment files
+.env
+.env.local
+
+# External repositories (cloned dependencies)
+external/
 
 # IDE
 .vscode/
@@ -35,6 +43,11 @@ ENV/
 # Results (keep structure, ignore data)
 results/*.json
 !results/.gitkeep
+
+# Benchmark outputs
+benchmarks/memu/memory/
+qa_error_log_*.txt
+enhanced_memory_test_results_*.json
 
 # OS
 .DS_Store
