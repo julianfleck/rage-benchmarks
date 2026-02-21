@@ -298,13 +298,13 @@ Always give specific dates, not relative terms."""
         
         self.system_prompt = rage_instructions + qa_instructions
     
-    def _execute_tool(self, name: str, args: Dict[str, Any]) -> str:
-        """Execute a RAGE tool and return result as string."""
+    def _execute_tool(self, name: str, args: Dict[str, Any]) -> Tuple[str, List[Dict]]:
+        """Execute a RAGE tool and return (formatted_result, raw_frames)."""
         # Execute tool through substrate (generic - handles any tool)
         result = self.substrate.tools.execute_sync(name, args)
         
         if not result.success:
-            return f"Error: {result.error}"
+            return f"Error: {result.error}", []
         
         # Format output based on result data
         data = result.data or {}
@@ -323,13 +323,13 @@ Always give specific dates, not relative terms."""
                     frame_str += f"\ncreated_at: {created_at}"
                 frame_str += f"\n{content}"
                 output.append(frame_str)
-            return "\n\n".join(output)
+            return "\n\n".join(output), frames
         
         # Handle other data types
         if data:
-            return json.dumps(data, indent=2, default=str)
+            return json.dumps(data, indent=2, default=str), []
         
-        return "No relevant information found."
+        return "No relevant information found.", []
     
     def answer_question(self, question: str, max_turns: int = 10) -> Tuple[str, Dict[str, Any]]:
         """
@@ -359,11 +359,12 @@ Always give specific dates, not relative terms."""
         if self.verbose:
             print(f"    [Fixed] context(query='{question}', effort='{effort}')")
         
-        context_result = self._execute_tool("context", {"query": question, "effort": effort})
+        context_result, frames = self._execute_tool("context", {"query": question, "effort": effort})
         
         metadata = {
             "tool_calls": [{"name": "context", "args": {"query": question, "effort": effort}}],
             "context_result": context_result if context_result else "",  # Full context for analysis
+            "frames": frames,  # Raw frame data for display
             "tokens_used": 0,
             "turns": 1,
             "mode": self.mode
@@ -396,8 +397,9 @@ Short answer:"""
         tool_calls = []
         
         # Step 1: Call context with low effort
-        context_result = self._execute_tool("context", {"query": question, "effort": "low"})
+        context_result, frames = self._execute_tool("context", {"query": question, "effort": "low"})
         tool_calls.append({"name": "context", "args": {"query": question, "effort": "low"}})
+        all_frames = frames.copy()
         
         # Step 2: Parse frame IDs from context result and traverse
         all_context_parts = [context_result] if context_result else []
@@ -410,8 +412,9 @@ Short answer:"""
         # Traverse each frame's relationships (up, down, lateral)
         for frame_id in frame_ids[:5]:  # Limit to first 5 frames to avoid explosion
             for direction in ["up", "down"]:
-                traverse_result = self._execute_tool("traverse", {"frame_id": frame_id, "direction": direction})
+                traverse_result, traverse_frames = self._execute_tool("traverse", {"frame_id": frame_id, "direction": direction})
                 tool_calls.append({"name": "traverse", "args": {"frame_id": frame_id, "direction": direction}})
+                all_frames.extend(traverse_frames)
                 
                 if traverse_result and "No frames found" not in traverse_result:
                     # Extract new frame IDs and get their content
@@ -420,8 +423,9 @@ Short answer:"""
                         if new_id not in seen_frames:
                             seen_frames.add(new_id)
                             # Get full content of traversed frame
-                            get_result = self._execute_tool("get", {"address": new_id})
+                            get_result, get_frames = self._execute_tool("get", {"address": new_id})
                             tool_calls.append({"name": "get", "args": {"address": new_id}})
+                            all_frames.extend(get_frames)
                             if get_result:
                                 all_context_parts.append(f"[Traversed {direction}] {get_result}")
         
@@ -431,6 +435,7 @@ Short answer:"""
         metadata = {
             "tool_calls": tool_calls,
             "context_result": combined_context,
+            "frames": all_frames,  # Raw frame data for display
             "tokens_used": 0,
             "turns": 1,
             "mode": self.mode
@@ -474,6 +479,7 @@ Short answer:"""
         
         metadata = {
             "tool_calls": [],
+            "frames": [],  # All frames collected
             "tokens_used": 0,
             "turns": 0,
             "mode": "autonomous"
@@ -503,13 +509,13 @@ Short answer:"""
                     if self.verbose:
                         print(f"    Tool: {func_name}({func_args})")
                     
-                    result = self._execute_tool(func_name, func_args)
+                    result, frames = self._execute_tool(func_name, func_args)
+                    metadata["frames"].extend(frames)
                     
                     metadata["tool_calls"].append({
                         "name": func_name,
                         "args": func_args,
                         "result_len": len(result),
-                        "result": result[:2000] if len(result) > 2000 else result  # Store actual context (truncated)
                     })
                     
                     # Store context for display (first context call wins)
@@ -543,12 +549,37 @@ Short answer:"""
         return response.choices[0].message.content or "", metadata
 
 
+def _format_frames_display(frames: List[Dict]) -> str:
+    """Format frames for display showing titles and hierarchy."""
+    if not frames:
+        return "(no frames)"
+    
+    lines = []
+    for f in frames[:8]:  # Limit display
+        title = f.get("title", "Untitled")[:50]
+        frame_type = f.get("frame_type", "")
+        parent_id = f.get("parent_id", "")
+        
+        # Build display line
+        line = f"• {title}"
+        if frame_type:
+            line += f" [{frame_type}]"
+        if parent_id:
+            line += f" (child of {parent_id[:12]}...)"
+        lines.append(line)
+    
+    if len(frames) > 8:
+        lines.append(f"  ... and {len(frames) - 8} more")
+    
+    return "\n".join(lines)
+
+
 def _render_question_panel(
     index: int,
     total: int,
     category_name: str,
     question: str,
-    context: str,
+    frames: List[Dict],
     llm_score: Optional[int],
     f1: float,
     latency_s: float,
@@ -564,11 +595,10 @@ def _render_question_panel(
     q_display = question if len(question) <= 70 else question[:67] + "..."
     table.add_row("Query:", q_display)
     
-    # Context preview (first 200 chars)
+    # Frame titles with hierarchy
     from rich.markup import escape
-    ctx_preview = context[:200] + "..." if len(context) > 200 else context
-    ctx_preview = ctx_preview.replace("\n", " ")
-    table.add_row("Context:", f"[dim]{escape(ctx_preview)}[/dim]")
+    frames_display = _format_frames_display(frames)
+    table.add_row("Frames:", f"[dim]{escape(frames_display)}[/dim]")
     
     # Metrics row
     if batch_judge:
@@ -653,17 +683,8 @@ def run_benchmark(
         else:
             llm_score = llm_judge(predicted, ground_truth, runner.client)
         
-        # Get context from tool calls for display
-        # Get context from tool results or metadata
-        context_preview = meta.get("context_result", "")
-        if not context_preview:
-            # Fallback: show tool call info
-            for tc in meta.get("tool_calls", []):
-                if tc.get("name") == "context":
-                    context_preview = tc.get("result", f"[{tc['args'].get('effort', 'auto')}] {tc['args'].get('query', '')[:100]}")
-                    break
-        if not context_preview:
-            context_preview = "(no context retrieved)"
+        # Get frames for display
+        frames = meta.get("frames", [])
         
         # Render rich panel
         panel = _render_question_panel(
@@ -671,7 +692,7 @@ def run_benchmark(
             total=len(qa_pairs),
             category_name=category_name,
             question=question,
-            context=context_preview,
+            frames=frames,
             llm_score=llm_score,
             f1=f1,
             latency_s=latency_s,
