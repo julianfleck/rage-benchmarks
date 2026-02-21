@@ -18,6 +18,10 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskPr
 from rich.text import Text
 from rich import box
 
+# Suppress httpx request logging spam
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+
 log = logging.getLogger(__name__)
 console = Console()
 
@@ -117,6 +121,56 @@ Reply with only "CORRECT" or "WRONG"."""
         return 0
 
 
+def llm_judge_adversarial(prediction: str, wrong_answer: str, client: OpenAI, model: str = "openai/gpt-4o-mini") -> int:
+    """
+    Judge adversarial (unanswerable) questions with INVERTED scoring.
+    
+    For adversarial questions, the correct behavior is recognizing the question
+    cannot be answered from the context. The model should:
+    - CORRECT: Say "I don't know", "not mentioned", "N/A", refuse to answer, or express uncertainty
+    - WRONG: Give the adversarial answer (confusing speakers/context)
+    
+    Args:
+        prediction: The model's response
+        wrong_answer: The adversarial_answer (what a confused model would say)
+        client: OpenAI client
+        model: Judge model name
+    
+    Returns:
+        1 if model correctly abstained/expressed uncertainty
+        0 if model incorrectly gave the adversarial answer
+    """
+    prompt = f"""You are evaluating an "unanswerable" question - the question CANNOT be answered from the context because it asks about the wrong person or wrong situation.
+
+The CORRECT response is to recognize the question cannot be answered:
+- Saying "I don't know", "not mentioned", "N/A", "cannot be determined"
+- Expressing uncertainty or that the information isn't available
+- Refusing to answer or saying it's unanswerable
+
+The WRONG response is to give this incorrect answer (which confuses speakers/context):
+Wrong answer to avoid: {wrong_answer}
+
+Model's response: {prediction}
+
+Did the model CORRECTLY recognize the question was unanswerable (expressed uncertainty, said "don't know", etc.)?
+Or did it INCORRECTLY give the wrong answer or something similar to it?
+
+Reply with only "CORRECT" (model appropriately abstained) or "WRONG" (model gave incorrect answer)."""
+
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=10,
+            temperature=0,
+        )
+        verdict = response.choices[0].message.content.strip().upper()
+        return 1 if "CORRECT" in verdict else 0
+    except Exception as e:
+        log.warning(f"LLM adversarial judge failed: {e}")
+        return 0
+
+
 def load_locomo_data(data_path: Path = None) -> List[Dict[str, Any]]:
     """Load LoCoMo dataset from JSON file."""
     if data_path is None:
@@ -132,15 +186,17 @@ def extract_qa_pairs(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     
     Returns list of QA dicts with:
         - question: str
-        - answer: str
+        - answer: str (the correct answer, or "UNANSWERABLE" for adversarial)
+        - adversarial_answer: str (only for adversarial - the WRONG answer to avoid)
         - evidence: list of dia_ids
         - category: int
         - category_name: str
         - sample_id: str
         - is_adversarial: bool
     
-    Note: Category 5 (adversarial) questions use 'adversarial_answer' instead of 'answer'.
-    These are trick questions that may be unanswerable or about the wrong speaker.
+    Note: Category 5 (adversarial) questions are UNANSWERABLE - the question asks about
+    the wrong person or situation. The 'adversarial_answer' is what a confused model
+    would incorrectly give. The correct response is to say "I don't know" or abstain.
     """
     qa_pairs = []
     
@@ -148,17 +204,26 @@ def extract_qa_pairs(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         sample_id = item.get("sample_id", "unknown")
         
         for qa in item.get("qa", []):
-            # Handle adversarial questions which use 'adversarial_answer'
-            answer = qa.get("answer") or qa.get("adversarial_answer", "")
+            is_adversarial = "adversarial_answer" in qa
+            
+            if is_adversarial:
+                # For adversarial: correct answer is "unanswerable", store wrong answer separately
+                answer = "UNANSWERABLE"
+                adversarial_answer = str(qa.get("adversarial_answer", ""))
+            else:
+                # Normal question: use provided answer
+                answer = str(qa.get("answer", ""))
+                adversarial_answer = None
             
             qa_pairs.append({
                 "question": qa["question"],
-                "answer": str(answer),
+                "answer": answer,
+                "adversarial_answer": adversarial_answer,  # The wrong answer (for adversarial only)
                 "evidence": qa.get("evidence", []),
                 "category": qa["category"],
                 "category_name": CATEGORY_NAMES.get(qa["category"], "unknown"),
                 "sample_id": sample_id,
-                "is_adversarial": "adversarial_answer" in qa
+                "is_adversarial": is_adversarial
             })
     
     return qa_pairs
@@ -168,7 +233,7 @@ class RAGEQARunner:
     """Run QA using RAGE tools and an LLM."""
     
     # Valid modes
-    MODES = ["autonomous", "fixed-low", "fixed-medium", "fixed-high"]
+    MODES = ["autonomous", "fixed-low", "fixed-medium", "fixed-high", "fixed-low-traverse"]
 
     def __init__(
         self,
@@ -208,9 +273,20 @@ class RAGEQARunner:
         rage_instructions = substrate.tools.instructions()
         qa_instructions = """
 
+## Current Date Reference
+
+The current date for this conversation is: **May 2023**
+Use this as your reference point for temporal reasoning.
+
 ## Answer Format
 
 Write answers as SHORT PHRASES only. Use exact words from the retrieved context whenever possible.
+
+## Unanswerable Questions
+
+If the retrieved context does not contain enough information to answer the question, respond with exactly: UNANSWERABLE
+
+Do NOT guess or make up information. If the question asks about person X but the context only mentions person Y, the answer is UNANSWERABLE.
 
 ## Temporal Reasoning
 
@@ -267,7 +343,9 @@ Always give specific dates, not relative terms."""
             (answer, metadata) tuple
         """
         # Dispatch based on mode
-        if self.mode.startswith("fixed-"):
+        if self.mode == "fixed-low-traverse":
+            return self._answer_fixed_traverse(question)
+        elif self.mode.startswith("fixed-"):
             return self._answer_fixed_effort(question)
         else:
             return self._answer_autonomous(question, max_turns)
@@ -304,7 +382,74 @@ Short answer:"""
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[
-                {"role": "system", "content": "Answer questions concisely using only the provided context. Give SHORT PHRASE answers."},
+                {"role": "system", "content": "Answer questions concisely using only the provided context. Give SHORT PHRASE answers. The current date is May 2023. When computing dates from relative terms like 'yesterday' or 'last year', use the frame's created_at timestamp."},
+                {"role": "user", "content": user_prompt}
+            ],
+            max_tokens=100
+        )
+        
+        metadata["tokens_used"] = response.usage.total_tokens if response.usage else 0
+        return response.choices[0].message.content or "", metadata
+    
+    def _answer_fixed_traverse(self, question: str) -> Tuple[str, Dict[str, Any]]:
+        """Answer using fixed-low + automatic traversal of hints."""
+        tool_calls = []
+        
+        # Step 1: Call context with low effort
+        context_result = self._execute_tool("context", {"query": question, "effort": "low"})
+        tool_calls.append({"name": "context", "args": {"query": question, "effort": "low"}})
+        
+        # Step 2: Parse frame IDs from context result and traverse
+        all_context_parts = [context_result] if context_result else []
+        
+        # Extract frame IDs from the context result (look for frm_ pattern)
+        import re
+        frame_ids = re.findall(r'frm_[a-f0-9]+', context_result or "")
+        seen_frames = set(frame_ids)
+        
+        # Traverse each frame's relationships (up, down, lateral)
+        for frame_id in frame_ids[:5]:  # Limit to first 5 frames to avoid explosion
+            for direction in ["up", "down"]:
+                traverse_result = self._execute_tool("traverse", {"frame_id": frame_id, "direction": direction})
+                tool_calls.append({"name": "traverse", "args": {"frame_id": frame_id, "direction": direction}})
+                
+                if traverse_result and "No frames found" not in traverse_result:
+                    # Extract new frame IDs and get their content
+                    new_frame_ids = re.findall(r'frm_[a-f0-9]+', traverse_result)
+                    for new_id in new_frame_ids[:3]:  # Limit per direction
+                        if new_id not in seen_frames:
+                            seen_frames.add(new_id)
+                            # Get full content of traversed frame
+                            get_result = self._execute_tool("get", {"address": new_id})
+                            tool_calls.append({"name": "get", "args": {"address": new_id}})
+                            if get_result:
+                                all_context_parts.append(f"[Traversed {direction}] {get_result}")
+        
+        # Combine all context
+        combined_context = "\n\n".join(all_context_parts)
+        
+        metadata = {
+            "tool_calls": tool_calls,
+            "context_result": combined_context,
+            "tokens_used": 0,
+            "turns": 1,
+            "mode": self.mode
+        }
+        
+        # Now ask LLM to answer based on enriched context
+        user_prompt = f"""Based on the following context, answer the question with a SHORT PHRASE only.
+
+Context:
+{combined_context}
+
+Question: {question}
+
+Short answer:"""
+        
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": "Answer questions concisely using only the provided context. Give SHORT PHRASE answers. The current date is May 2023. When computing dates from relative terms like 'yesterday' or 'last year', use the frame's created_at timestamp."},
                 {"role": "user", "content": user_prompt}
             ],
             max_tokens=100
@@ -363,8 +508,13 @@ Short answer:"""
                     metadata["tool_calls"].append({
                         "name": func_name,
                         "args": func_args,
-                        "result_len": len(result)
+                        "result_len": len(result),
+                        "result": result[:2000] if len(result) > 2000 else result  # Store actual context (truncated)
                     })
+                    
+                    # Store context for display (first context call wins)
+                    if func_name == "context" and "context_result" not in metadata:
+                        metadata["context_result"] = result
                     
                     messages.append({
                         "role": "tool",
@@ -415,9 +565,10 @@ def _render_question_panel(
     table.add_row("Query:", q_display)
     
     # Context preview (first 200 chars)
+    from rich.markup import escape
     ctx_preview = context[:200] + "..." if len(context) > 200 else context
     ctx_preview = ctx_preview.replace("\n", " ")
-    table.add_row("Context:", f"[dim]{ctx_preview}[/dim]")
+    table.add_row("Context:", f"[dim]{escape(ctx_preview)}[/dim]")
     
     # Metrics row
     if batch_judge:
@@ -492,7 +643,15 @@ def run_benchmark(
         # Compute metrics (LLM judge deferred if batch_judge=True)
         f1 = compute_f1(predicted, ground_truth)
         em = compute_exact_match(predicted, ground_truth)
-        llm_score = None if batch_judge else llm_judge(predicted, ground_truth, runner.client)
+        
+        # Use appropriate judge based on question type
+        if batch_judge:
+            llm_score = None
+        elif qa["is_adversarial"]:
+            # Adversarial: inverted scoring - correct = abstain, wrong = give adversarial answer
+            llm_score = llm_judge_adversarial(predicted, qa["adversarial_answer"], runner.client)
+        else:
+            llm_score = llm_judge(predicted, ground_truth, runner.client)
         
         # Get context from tool calls for display
         # Get context from tool results or metadata
@@ -520,11 +679,17 @@ def run_benchmark(
         )
         console.print(panel)
         
-        # Verbose: show ground truth and prediction
-        if verbose:
-            console.print(f"  [dim]Ground truth:[/dim] {ground_truth}")
-            console.print(f"  [dim]Predicted:[/dim] {predicted[:150]}...")
-            console.print()
+        # Always show ground truth and prediction (escape markup)
+        from rich.markup import escape
+        console.print(f"  [dim]Expected:[/dim] [green]{escape(ground_truth)}[/green]")
+        console.print(f"  [dim]Got:[/dim] [yellow]{escape(predicted[:150])}[/yellow]")
+        
+        # Show tool calls made
+        tool_calls = meta.get("tool_calls", [])
+        if tool_calls:
+            tool_names = [tc.get("name", "?") for tc in tool_calls]
+            console.print(f"  [dim]Tools:[/dim] [cyan]{' → '.join(tool_names)}[/cyan]")
+        console.print()
         
         # Store result
         q_result = {
@@ -536,6 +701,8 @@ def run_benchmark(
             "category": category,
             "category_name": category_name,
             "sample_id": qa["sample_id"],
+            "is_adversarial": qa["is_adversarial"],
+            "adversarial_answer": qa.get("adversarial_answer"),  # The wrong answer (for adversarial)
             "f1": f1,
             "exact_match": em,
             "llm_score": llm_score,  # None if batch_judge
@@ -573,7 +740,12 @@ def run_benchmark(
             task = progress.add_task("[cyan]Judging answers...", total=len(results["questions"]))
             
             for i, q in enumerate(results["questions"], 1):
-                llm_score = llm_judge(q["predicted"], q["ground_truth"], runner.client)
+                # Use appropriate judge based on question type
+                if q.get("is_adversarial"):
+                    # Adversarial: inverted scoring - correct = abstain, wrong = give adversarial answer
+                    llm_score = llm_judge_adversarial(q["predicted"], q["adversarial_answer"], runner.client)
+                else:
+                    llm_score = llm_judge(q["predicted"], q["ground_truth"], runner.client)
                 q["llm_score"] = llm_score
                 total_llm += llm_score
                 
@@ -743,7 +915,7 @@ def main():
         "--mode",
         type=str,
         default="autonomous",
-        choices=["autonomous", "fixed-low", "fixed-medium", "fixed-high"],
+        choices=["autonomous", "fixed-low", "fixed-medium", "fixed-high", "fixed-low-traverse"],
         help="Benchmark mode: autonomous (full tools) or fixed-{low,medium,high} (inject context call)"
     )
     parser.add_argument(
