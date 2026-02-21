@@ -280,7 +280,11 @@ Use this as your reference point for temporal reasoning.
 
 ## Answer Format
 
-Write answers as SHORT PHRASES only. Use exact words from the retrieved context whenever possible.
+Write concise but COMPLETE answers. Include relevant details from the context.
+- If the context says "mental health counseling for transgender people", say that — not just "mental health counseling"
+- If the context mentions specific details (names, dates, places), include them
+- Use exact words and phrases from the context when possible
+- Be specific, not vague
 
 ## Unanswerable Questions
 
@@ -371,7 +375,7 @@ Always give specific dates, not relative terms."""
         }
         
         # Now ask LLM to answer based on context
-        user_prompt = f"""Based on the following context, answer the question with a SHORT PHRASE only.
+        user_prompt = f"""Based on the following context, answer the question with a concise but complete answer.
 
 Context:
 {context_result}
@@ -383,7 +387,7 @@ Short answer:"""
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[
-                {"role": "system", "content": "Answer questions concisely using only the provided context. Give SHORT PHRASE answers. The current date is May 2023. When computing dates from relative terms like 'yesterday' or 'last year', use the frame's created_at timestamp."},
+                {"role": "system", "content": "Answer questions concisely using only the provided context. Give concise but complete answers with relevant details. The current date is May 2023. When computing dates from relative terms like 'yesterday' or 'last year', use the frame's created_at timestamp."},
                 {"role": "user", "content": user_prompt}
             ],
             max_tokens=100
@@ -442,7 +446,7 @@ Short answer:"""
         }
         
         # Now ask LLM to answer based on enriched context
-        user_prompt = f"""Based on the following context, answer the question with a SHORT PHRASE only.
+        user_prompt = f"""Based on the following context, answer the question with a concise but complete answer.
 
 Context:
 {combined_context}
@@ -454,7 +458,7 @@ Short answer:"""
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[
-                {"role": "system", "content": "Answer questions concisely using only the provided context. Give SHORT PHRASE answers. The current date is May 2023. When computing dates from relative terms like 'yesterday' or 'last year', use the frame's created_at timestamp."},
+                {"role": "system", "content": "Answer questions concisely using only the provided context. Give concise but complete answers with relevant details. The current date is May 2023. When computing dates from relative terms like 'yesterday' or 'last year', use the frame's created_at timestamp."},
                 {"role": "user", "content": user_prompt}
             ],
             max_tokens=100
@@ -466,7 +470,7 @@ Short answer:"""
     def _answer_autonomous(self, question: str, max_turns: int = 10) -> Tuple[str, Dict[str, Any]]:
         """Answer using autonomous tool selection."""
         # Format question with LoCoMo-style prompt for short answers
-        user_prompt = f"""Answer this question using the knowledge tools. Give a SHORT PHRASE answer only.
+        user_prompt = f"""Answer this question using the knowledge tools. Give a concise but complete answer.
 
 Question: {question}
 
