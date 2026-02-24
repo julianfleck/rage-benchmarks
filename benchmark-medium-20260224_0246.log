@@ -1,0 +1,702 @@
+── LoCoMo Benchmark ───
+
+Loading LoCoMo data...
+  Loaded 1986 QA pairs 
+from 10 conversations
+  Filtered to 
+conversation 0 
+(conv-26): 199 
+questions
+  Database: 
+/home/openclaw/.opencla
+w/workspace/repos/rage-
+substrate/test_substrat
+e.db
+
+  Pre-loading NLP 
+models...
+    ✓ spaCy loaded
+    ✓ WordNet loaded
+
+                       
+  Model      openai/…  
+  Mode       fixed-m…  
+  Batch      yes       
+  judging              
+                       
+
+── Running Benchmark ──
+
+╭─ [1/199] temporal ──╮
+│  Query:      When   │
+│              did    │
+│              Caro…  │
+│              go to  │
+│              the    │
+│              LGBTQ  │
+│              supp…  │
+│              grou…  │
+│  Frames:     •      │
+│              LGBTQ  │
+│              supp…  │
+│              group  │
+│              •      │
+│              LOCO…  │
+│              conv…  │
+│              • A    │
+│              ment…  │
+│              prog…  │
+│              Caro…  │
+│              join…  │
+│              for    │
+│              LGBTQ  │
+│              you    │
+│              • A    │
+│              pain…  │
+│              Caro…  │
+│              crea…  │
+│              for    │
+│              her    │
+│              LGBTQ  │
+│              art    │
+│              show   │
+│              • An   │
+│              upco…  │
+│              LGBTQ  │
+│              art    │
+│              show   │
+│              where  │
+│              Caro…  │
+│              will   │
+│              dis    │
+│              •      │
+│              Caro…  │
+│              real…  │
+│              that   │
+│              havi…  │
+│              peop…  │
+│              who    │
+│              supp   │
+│              •      │
+│              LGBTQ  │
+│              conf…  │
+│              •      │
+│              Caro…  │
+│                ...  │
+│              and 2  │
+│              more   │
+│  Metrics:    Judg…  │
+│              pend…  │
+│              │ F1:  │
+│              0.46   │
+│              │      │
+│              Late…  │
+│              11.3s  │
+╰─────────────────────╯
+  Expected: 7 May 2023
+  Got: Caroline went to
+the LGBTQ support group
+on May 7, 2023.
+  Tools: context
+
+╭────────────── [2/199] temporal ──────────────╮
+│  Query:      When did Melanie paint a        │
+│              sunrise?                        │
+│  Frames:     • Melanie's painting of a lake  │
+│              sunrise from the prev           │
+│              • Melanie                       │
+│              • LOCOMO conv-26                │
+│              • The shared belief between     │
+│              Caroline and Melanie tha        │
+│              • Melanie's husband and kids    │
+│              • A black and white bowl        │
+│              Melanie made in her pottery     │
+│              • Projects                      │
+│              • A painting Melanie and her    │
+│              kids created together,          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.00 │     │
+│              Latency: 9.6s                   │
+╰──────────────────────────────────────────────╯
+  Expected: 2022
+  Got: Melanie painted a sunrise last year, from
+the current context date which is 2026-02-24, 
+indicating she painted it in 2025.
+  Tools: context
+
+╭──────────── [3/199] commonsense ─────────────╮
+│  Query:      What fields would Caroline be   │
+│              likely to pursue in her         │
+│              educaton?                       │
+│  Frames:     • Caroline's realization that   │
+│              the support group made          │
+│              • Melanie's goal to find peace  │
+│              through creativity an           │
+│              • Caroline's realization that   │
+│              the transgender storie          │
+│              • LGBTQ+ pride parade           │
+│              • Pride parade                  │
+│              • LGBTQ conference              │
+│              • LOCOMO conv-26                │
+│              • Caroline's goal to continue   │
+│              her education and expl          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.29 │     │
+│              Latency: 14.5s                  │
+╰──────────────────────────────────────────────╯
+  Expected: Psychology, counseling certification
+  Got: Counseling and mental health.
+  Tools: context
+
+╭───────────── [4/199] single-hop ─────────────╮
+│  Query:      What did Caroline research?     │
+│  Frames:     • Caroline                      │
+│              • LOCOMO conv-26                │
+│              • Caroline's goal to research   │
+│              adoption agencies with          │
+│              • A black and white bowl        │
+│              Melanie made in her pottery     │
+│              • An upcoming LGBTQ art show    │
+│              where Caroline will dis         │
+│              • Goals                         │
+│              • Caroline's increased care     │
+│              for mental health and se        │
+│              • People                        │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.21 │     │
+│              Latency: 4.9s                   │
+╰──────────────────────────────────────────────╯
+  Expected: Adoption agencies
+  Got: Caroline researched adoption agencies 
+with the dream of having a family and providing 
+a loving home to children in need.
+  Tools: context
+
+╭───────────── [5/199] single-hop ─────────────╮
+│  Query:      What is Caroline's identity?    │
+│  Frames:     • Caroline's assertion that     │
+│              conversations about gend        │
+│              • Caroline                      │
+│              • LOCOMO conv-26                │
+│              • Caroline's new hobby of       │
+│              learning the piano, which       │
+│              • Caroline's goal to continue   │
+│              using her voice to mak          │
+│              • An upcoming LGBTQ art show    │
+│              where Caroline will dis         │
+│              • Caroline's goal to spread     │
+│              love and understanding a        │
+│              • Caroline's goal to research   │
+│              adoption agencies with          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.00 │     │
+│              Latency: 5.0s                   │
+╰──────────────────────────────────────────────╯
+  Expected: Transgender woman
+  Got: Caroline is an LGBTQ+ advocate who has 
+transitioned and is actively involved in 
+promoting gender identity and inclusion. She is 
+aspiring to be a couns
+  Tools: context
+
+╭────────────── [6/199] temporal ──────────────╮
+│  Query:      When did Melanie run a charity  │
+│              race?                           │
+│  Frames:     • Charity race for mental       │
+│              health                          │
+│              • Melanie                       │
+│              • LOCOMO conv-26                │
+│              • Events                        │
+│              • Melanie's insight that        │
+│              painting is a fun way to ex     │
+│              • The shared belief between     │
+│              Caroline and Melanie tha        │
+│              • Melanie's husband and kids    │
+│              • A black and white bowl        │
+│              Melanie made in her pottery     │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.31 │     │
+│              Latency: 9.3s                   │
+╰──────────────────────────────────────────────╯
+  Expected: The sunday before 25 May 2023
+  Got: Melanie ran a charity race on May 20, 
+2023.
+  Tools: context
+
+╭────────────── [7/199] temporal ──────────────╮
+│  Query:      When is Melanie planning on     │
+│              going camping?                  │
+│  Frames:     • LOCOMO conv-26                │
+│              • Caroline                      │
+│              • Melanie's goal to prioritize  │
+│              self-care by carving            │
+│              • Melanie                       │
+│              • Melanie's insight that        │
+│              painting is a fun way to ex     │
+│              • Caroline's observation that   │
+│              Melanie's painting dem          │
+│              • Camping trip in the forest    │
+│              • Melanie's belief that         │
+│              flowers bring joy, represent    │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.00 │     │
+│              Latency: 8.0s                   │
+╰──────────────────────────────────────────────╯
+  Expected: June 2023
+  Got: Melanie is planning on going camping next
+month.
+  Tools: context
+
+╭───────────── [8/199] single-hop ─────────────╮
+│  Query:      What is Caroline's              │
+│              relationship status?            │
+│  Frames:     • Caroline's new hobby of       │
+│              learning the piano, which       │
+│              • Melanie's new hobby of        │
+│              pottery, which she finds th     │
+│              • Melanie's goal to prioritize  │
+│              self-care by carving            │
+│              • Caroline's goal of creating   │
+│              a library for her futu          │
+│              • Caroline's goal to spread     │
+│              love and understanding a        │
+│              • Caroline's goal to continue   │
+│              using her voice to mak          │
+│              • Caroline's goal to research   │
+│              adoption agencies with          │
+│              • Caroline's goal to continue   │
+│              her education and expl          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.00 │     │
+│              Latency: 6.6s                   │
+╰──────────────────────────────────────────────╯
+  Expected: Single
+  Got: The context does not provide information 
+about Caroline's relationship status.
+  Tools: context
+
+╭────────────── [9/199] temporal ──────────────╮
+│  Query:      When did Caroline give a        │
+│              speech at a school?             │
+│  Frames:     • Caroline                      │
+│              • LOCOMO conv-26                │
+│              • Melanie's goal to be          │
+│              courageous for her family, wh   │
+│              • Caroline's ultimate goal to   │
+│              give kids a loving hom          │
+│              • Caroline's friends, family    │
+│              and mentors                     │
+│              • School event                  │
+│              • Caroline's renewed            │
+│              motivation to use her story to  │
+│              • A black and white bowl        │
+│              Melanie made in her pottery     │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.29 │     │
+│              Latency: 10.4s                  │
+╰──────────────────────────────────────────────╯
+  Expected: The week before 9 June 2023
+  Got: Caroline gave a speech at a school on 
+June 2, 2023.
+  Tools: context
+
+╭───────────── [10/199] temporal ──────────────╮
+│  Query:      When did Caroline meet up with  │
+│              her friends, family, and        │
+│              mentors?                        │
+│  Frames:     • Caroline's friends, family    │
+│              and mentors                     │
+│              • Caroline's appreciation for   │
+│              her friends and family          │
+│              • LOCOMO conv-26                │
+│              • Caroline                      │
+│              • Caroline's goal to research   │
+│              adoption agencies with          │
+│              • Caroline's goal to continue   │
+│              using her voice to mak          │
+│              • A mentorship program          │
+│              Caroline joined for LGBTQ you   │
+│              • An upcoming LGBTQ art show    │
+│              where Caroline will dis         │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.00 │     │
+│              Latency: 11.4s                  │
+╰──────────────────────────────────────────────╯
+  Expected: The week before 9 June 2023
+  Got: Caroline met her friends, family, and 
+mentors four years ago from the current context 
+date of February 24, 2026, meaning she met them 
+in 2022.
+  Tools: context
+
+╭───────────── [11/199] temporal ──────────────╮
+│  Query:      How long has Caroline had her   │
+│              current group of friends for?   │
+│  Frames:     • LOCOMO conv-26                │
+│              • Caroline                      │
+│              • Caroline's realization that   │
+│              the transgender storie          │
+│              • Melanie                       │
+│              • Caroline's assertion that     │
+│              her support network has         │
+│              • Caroline's realization that   │
+│              the support group made          │
+│              • Caroline's appreciation for   │
+│              her friends and family          │
+│              • Caroline's reflection on how  │
+│              far she has come sinc           │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.15 │     │
+│              Latency: 11.7s                  │
+╰──────────────────────────────────────────────╯
+  Expected: 4 years
+  Got: Caroline has known her current group of 
+friends for four years.
+  Tools: context
+
+╭──────────── [12/199] single-hop ─────────────╮
+│  Query:      Where did Caroline move from 4  │
+│              years ago?                      │
+│  Frames:     • Caroline                      │
+│              • LOCOMO conv-26                │
+│              • Caroline's reflection on how  │
+│              far she has come sinc           │
+│              • Melanie                       │
+│              • Hand-painted bowl             │
+│              • Melanie's painting of a lake  │
+│              sunrise from the prev           │
+│              • Caroline's takeaway from      │
+│              'Becoming Nicole' about s       │
+│              • Caroline's understanding      │
+│              that sunflowers represent       │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.00 │     │
+│              Latency: 8.4s                   │
+╰──────────────────────────────────────────────╯
+  Expected: Sweden
+  Got: Caroline moved from her home country 4 
+years ago.
+  Tools: context
+
+╭───────────── [13/199] temporal ──────────────╮
+│  Query:      How long ago was Caroline's     │
+│              18th birthday?                  │
+│  Frames:     • Caroline's specific career    │
+│              interest in counseling          │
+│              • Caroline's increased care     │
+│              for mental health and se        │
+│              • Caroline's realization that   │
+│              having people who supp          │
+│              • Melanie's assertion that      │
+│              Caroline would be a great       │
+│              • LOCOMO conv-26                │
+│              • Hand-painted bowl             │
+│              • Caroline                      │
+│              • Melanie                       │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.36 │     │
+│              Latency: 9.3s                   │
+╰──────────────────────────────────────────────╯
+  Expected: 10 years ago
+  Got: Caroline's 18th birthday was ten years 
+ago.
+  Tools: context
+
+╭──────────── [14/199] single-hop ─────────────╮
+│  Query:      What career path has Caroline   │
+│              decided to persue?              │
+│  Frames:     • Caroline                      │
+│              • LOCOMO conv-26                │
+│              • Caroline's goal to continue   │
+│              her education and expl          │
+│              • Caroline's specific career    │
+│              interest in counseling          │
+│              • Caroline's realization that   │
+│              her personal struggle           │
+│              • Caroline's assertion that     │
+│              her support network has         │
+│              • Caroline's assertion that     │
+│              conversations about gend        │
+│              • Caroline's increased care     │
+│              for mental health and se        │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.44 │     │
+│              Latency: 15.5s                  │
+╰──────────────────────────────────────────────╯
+  Expected: counseling or mental health for 
+Transgender people
+  Got: Caroline has decided to pursue a career 
+in counseling or mental health.
+  Tools: context
+
+╭──────────── [15/199] commonsense ────────────╮
+│  Query:      Would Caroline still want to    │
+│              pursue counseling as a career   │
+│              if she h...                     │
+│  Frames:     • Caroline                      │
+│              • LOCOMO conv-26                │
+│              • Melanie                       │
+│              • Caroline's renewed            │
+│              motivation to use her story to  │
+│              • Melanie's assertion that      │
+│              Caroline would be a great       │
+│              • Caroline's increased care     │
+│              for mental health and se        │
+│              • Caroline's realization that   │
+│              her own journey and th          │
+│              • Caroline's specific career    │
+│              interest in counseling          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.05 │     │
+│              Latency: 19.2s                  │
+╰──────────────────────────────────────────────╯
+  Expected: Likely no
+  Got: It is likely that Caroline would not have
+pursued counseling as a career if she hadn't 
+received support growing up. Her realization 
+that the support s
+  Tools: context
+
+╭──────────── [16/199] single-hop ─────────────╮
+│  Query:      What activities does Melanie    │
+│              partake in?                     │
+│  Frames:     • LOCOMO conv-26                │
+│              • Melanie's goal to prioritize  │
+│              self-care by carving            │
+│              • Melanie                       │
+│              • A black and white bowl        │
+│              Melanie made in her pottery     │
+│              • A painting Melanie and her    │
+│              kids created together,          │
+│              • Melanie's assertion that her  │
+│              family's love and sup           │
+│              • The shared belief between     │
+│              Caroline and Melanie tha        │
+│              • People                        │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.23 │     │
+│              Latency: 9.2s                   │
+╰──────────────────────────────────────────────╯
+  Expected: pottery, camping, painting, swimming
+  Got: Melanie partakes in activities such as 
+running, reading, playing the violin, pottery, 
+painting, camping, hiking, and going on museum 
+trips with her ki
+  Tools: context
+
+╭───────────── [17/199] temporal ──────────────╮
+│  Query:      When did Melanie sign up for a  │
+│              pottery class?                  │
+│  Frames:     • A black and white bowl        │
+│              Melanie made in her pottery     │
+│              • Melanie's new hobby of        │
+│              pottery, which she finds th     │
+│              • LOCOMO conv-26                │
+│              • Melanie                       │
+│              • Pottery workshop              │
+│              • Objects                       │
+│              • People                        │
+│              • The shared belief between     │
+│              Caroline and Melanie tha        │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.00 │     │
+│              Latency: 9.7s                   │
+╰──────────────────────────────────────────────╯
+  Expected: 2 July 2023
+  Got: Melanie signed up for a pottery class on 
+February 23, 2026.
+  Tools: context
+
+╭───────────── [18/199] temporal ──────────────╮
+│  Query:      When is Caroline going to the   │
+│              transgender conference?         │
+│  Frames:     • Transgender conference        │
+│              • LOCOMO conv-26                │
+│              • Caroline                      │
+│              • LGBTQ conference              │
+│              • Transgender teen mentee       │
+│              • Melanie's belief that         │
+│              Caroline will be an awesome     │
+│              • Caroline's realization that   │
+│              the transgender storie          │
+│              • Caroline's assertion that     │
+│              conversations about gend        │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.36 │     │
+│              Latency: 7.9s                   │
+╰──────────────────────────────────────────────╯
+  Expected: July 2023
+  Got: Caroline is going to the transgender 
+conference in July 2023.
+  Tools: context
+
+╭──────────── [19/199] single-hop ─────────────╮
+│  Query:      Where has Melanie camped?       │
+│  Frames:     • Melanie                       │
+│              • LOCOMO conv-26                │
+│              • A painting Melanie and her    │
+│              kids created together,          │
+│              • The shared belief between     │
+│              Caroline and Melanie tha        │
+│              • Events                        │
+│              • Caroline's observation that   │
+│              Melanie's painting dem          │
+│              • People                        │
+│              • Melanie's insight that        │
+│              'Charlotte's Web' demonstra     │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.40 │     │
+│              Latency: 6.6s                   │
+╰──────────────────────────────────────────────╯
+  Expected: beach, mountains, forest
+  Got: Melanie has camped in the mountains and 
+the forest.
+  Tools: context
+
+╭──────────── [20/199] single-hop ─────────────╮
+│  Query:      What do Melanie's kids like?    │
+│  Frames:     • Caroline's friends, family    │
+│              and mentors                     │
+│              • Caroline's goal to research   │
+│              adoption agencies with          │
+│              • Caroline's ultimate goal to   │
+│              give kids a loving hom          │
+│              • Melanie's husband and kids    │
+│              • LOCOMO conv-26                │
+│              • Caroline                      │
+│              • Caroline's observation that   │
+│              Melanie's painting dem          │
+│              • Melanie's affirmation that    │
+│              finding the courage to          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.11 │     │
+│              Latency: 6.3s                   │
+╰──────────────────────────────────────────────╯
+  Expected: dinosaurs, nature
+  Got: Melanie's kids like painting, especially 
+creating nature-inspired paintings as a bonding 
+activity with their mother.
+  Tools: context
+
+╭───────────── [21/199] temporal ──────────────╮
+│  Query:      When did Melanie go to the      │
+│              museum?                         │
+│  Frames:     • Melanie                       │
+│              • LOCOMO conv-26                │
+│              • Museum visit                  │
+│              • A black and white bowl        │
+│              Melanie made in her pottery     │
+│              • The shared belief between     │
+│              Caroline and Melanie tha        │
+│              • Events                        │
+│              • People                        │
+│              • Melanie's wedding day         │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.55 │     │
+│              Latency: 7.4s                   │
+╰──────────────────────────────────────────────╯
+  Expected: 5 July 2023
+  Got: Melanie went to the museum on July 5, 
+2023.
+  Tools: context
+
+╭───────────── [22/199] temporal ──────────────╮
+│  Query:      When did Caroline have a        │
+│              picnic?                         │
+│  Frames:     • Melanie's painting of a lake  │
+│              sunrise from the prev           │
+│              • LOCOMO conv-26                │
+│              • Family picnic                 │
+│              • A black and white bowl        │
+│              Melanie made in her pottery     │
+│              • Caroline's assertion that     │
+│              conversations about gend        │
+│              • Caroline's assertion that     │
+│              her support network has         │
+│              • Caroline's realization that   │
+│              being able to be herse          │
+│              • Caroline's realization that   │
+│              having people who supp          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.17 │     │
+│              Latency: 7.0s                   │
+╰──────────────────────────────────────────────╯
+  Expected: The week before 6 July 2023
+  Got: Caroline had a picnic on June 30, 2023.
+  Tools: context
+
+╭──────────── [23/199] commonsense ────────────╮
+│  Query:      Would Caroline likely have Dr.  │
+│              Seuss books on her bookshelf?   │
+│  Frames:     • LOCOMO conv-26                │
+│              • Caroline                      │
+│              • Melanie                       │
+│              • Melanie's assertion that      │
+│              Caroline would be a great       │
+│              • Caroline's belief that her    │
+│              support system's love a         │
+│              • Caroline's realization that   │
+│              the support group made          │
+│              • Caroline's observation of     │
+│              her mentee's face lighti        │
+│              • Caroline's appreciation for   │
+│              her friends and family          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.17 │     │
+│              Latency: 11.3s                  │
+╰──────────────────────────────────────────────╯
+  Expected: Yes, since she collects classic 
+children's books
+  Got: Yes, Caroline would likely have Dr. Seuss
+books on her bookshelf, given her goal of 
+creating a library for her future children with 
+lots of kids' book
+  Tools: context
+
+╭──────────── [24/199] single-hop ─────────────╮
+│  Query:      What books has Melanie read?    │
+│  Frames:     • Melanie                       │
+│              • LOCOMO conv-26                │
+│              • Caroline                      │
+│              • Museum visit                  │
+│              • Melanie's goal to keep        │
+│              motivating and helping each     │
+│              • Family camping trip in the    │
+│              mountains                       │
+│              • Pottery workshop              │
+│              • Caroline's observation that   │
+│              Melanie's painting dem          │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.50 │     │
+│              Latency: 8.7s                   │
+╰──────────────────────────────────────────────╯
+  Expected: "Nothing is Impossible", 
+"Charlotte's Web"
+  Got: Melanie has read "Charlotte's Web."
+  Tools: context
+
+╭──────────── [25/199] single-hop ─────────────╮
+│  Query:      What does Melanie do to         │
+│              destress?                       │
+│  Frames:     • Melanie's goal to prioritize  │
+│              self-care by carving            │
+│              • LOCOMO conv-26                │
+│              • Museum visit                  │
+│              • Melanie                       │
+│              • Melanie's new hobby of        │
+│              pottery, which she finds th     │
+│              • The shared belief between     │
+│              Caroline and Melanie tha        │
+│              • Melanie's insight that        │
+│              painting is a fun way to ex     │
+│              • Caroline                      │
+│                ... and 2 more                │
+│  Metrics:    Judge: pending │ F1: 0.10 │     │
+│              Latency: 7.0s                   │
+╰──────────────────────────────────────────────╯
+  Expected: Running, pottery
+  Got: Melanie destresses by running longer 
+distances, which she finds to be a great way to 
+clear her mind and improve her headspace.
+  Tools: context
+

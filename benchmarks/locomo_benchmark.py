@@ -106,6 +106,8 @@ IMPORTANT - these are EQUIVALENT and should be judged CORRECT:
 - Computed dates matching relative descriptions: "The friday before 15 July 2023" = "July 7, 2023" (if Friday July 7 is indeed the Friday before July 15)
 - Day-of-week with date vs just date: "Saturday, May 20, 2023" = "May 20, 2023"
 - Minor wording differences with same meaning: "counseling for transgender people" ≈ "mental health counseling for transgender individuals"
+- MORE PRECISE dates within the expected range: If ground truth says "the week before June 23rd" and prediction says "June 16, 2023", judge CORRECT if June 16 falls within that week
+- Specific dates matching vague ranges: A precise date that falls within a described time range is CORRECT (more precise is better, not wrong)
 
 Ground Truth: {ground_truth}
 Predicted Answer: {prediction}
