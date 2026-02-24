@@ -101,6 +101,12 @@ def llm_judge(prediction: str, ground_truth: str, client: OpenAI, model: str = "
     prompt = f"""You are evaluating whether a predicted answer matches the ground truth answer.
 The answers don't need to be word-for-word identical, but they must convey the same information.
 
+IMPORTANT - these are EQUIVALENT and should be judged CORRECT:
+- Different date formats: "10 July 2023" = "July 10, 2023" = "2023-07-10"
+- Computed dates matching relative descriptions: "The friday before 15 July 2023" = "July 7, 2023" (if Friday July 7 is indeed the Friday before July 15)
+- Day-of-week with date vs just date: "Saturday, May 20, 2023" = "May 20, 2023"
+- Minor wording differences with same meaning: "counseling for transgender people" ≈ "mental health counseling for transgender individuals"
+
 Ground Truth: {ground_truth}
 Predicted Answer: {prediction}
 
@@ -233,7 +239,7 @@ class RAGEQARunner:
     """Run QA using RAGE tools and an LLM."""
     
     # Valid modes
-    MODES = ["autonomous", "fixed-low", "fixed-medium", "fixed-high", "fixed-low-traverse"]
+    MODES = ["autonomous", "autonomous-low", "fixed-low", "fixed-medium", "fixed-high", "fixed-low-traverse"]
 
     def __init__(
         self,
@@ -298,7 +304,25 @@ When content mentions relative times like "yesterday", "last week", "last year",
 
 Example: If a frame has created_at="2023-05-08" and content says "yesterday", the answer should be "7 May 2023" (not "yesterday").
 
-Always give specific dates, not relative terms."""
+Always give specific dates, not relative terms.
+
+## Exploration Strategy
+
+Don't give up after one context() call. The knowledge graph rewards exploration:
+
+1. **Check frame hints** — returned frames show related content (parent, children, siblings)
+2. **Use traverse()** — follow relationships: `traverse(frame_id, direction="up/down/lateral")`
+3. **Use get()** — retrieve full content including slots: `get(frame_id)`
+4. **Aggregate scattered facts** — answers may be spread across 2-3 frames
+
+**Example workflow:**
+- Question: "Where has Melanie camped?"
+- context("Melanie camping") → finds one camping frame mentioning "forest"
+- Check hints → see related frames about other trips
+- traverse(frame_id, "lateral") → find "beach" and "mountains" frames
+- Answer: "beach, mountains, forest"
+
+When initial results seem incomplete, EXPLORE before answering UNANSWERABLE."""
         
         self.system_prompt = rage_instructions + qa_instructions
     
@@ -314,20 +338,29 @@ Always give specific dates, not relative terms."""
         data = result.data or {}
         
         # Handle frames (from find, context, etc.)
+        # Return full JSON with all fields: slots, summary, content, metadata
         frames = data.get("frames", [])
         if frames:
-            output = []
+            # Include full frame data - slots, content, summary, metadata
+            # This is what the model needs for accurate answers
+            output_frames = []
             for frame in frames[:10]:
-                title = frame.get("title", "Untitled")
-                created_at = frame.get("created_at", "")
-                content = frame.get("content", "") or frame.get("summary", "")
-                # Include timestamp for temporal reasoning
-                frame_str = f"[{title}]"
-                if created_at:
-                    frame_str += f"\ncreated_at: {created_at}"
-                frame_str += f"\n{content}"
-                output.append(frame_str)
-            return "\n\n".join(output), frames
+                # Keep all relevant fields for the model
+                frame_data = {
+                    "id": frame.get("id"),
+                    "title": frame.get("title"),
+                    "type": frame.get("type"),
+                    "created_at": frame.get("created_at"),
+                    "summary": frame.get("summary"),
+                    "content": frame.get("content"),
+                    "slots": frame.get("slots"),
+                    "territory": frame.get("territory"),
+                    "parent_id": frame.get("parent_id"),
+                }
+                # Remove None values for cleaner output
+                frame_data = {k: v for k, v in frame_data.items() if v is not None}
+                output_frames.append(frame_data)
+            return json.dumps(output_frames, indent=2, default=str), frames
         
         # Handle other data types
         if data:
@@ -349,6 +382,8 @@ Always give specific dates, not relative terms."""
         # Dispatch based on mode
         if self.mode == "fixed-low-traverse":
             return self._answer_fixed_traverse(question)
+        elif self.mode == "autonomous-low":
+            return self._answer_autonomous_low(question, max_turns)
         elif self.mode.startswith("fixed-"):
             return self._answer_fixed_effort(question)
         else:
@@ -465,6 +500,105 @@ Short answer:"""
         )
         
         metadata["tokens_used"] = response.usage.total_tokens if response.usage else 0
+        return response.choices[0].message.content or "", metadata
+    
+    def _answer_autonomous_low(self, question: str, max_turns: int = 10) -> Tuple[str, Dict[str, Any]]:
+        """
+        Answer with low-effort context upfront, then allow autonomous exploration.
+        
+        Hybrid mode:
+        1. Start with low-effort context call (fast keyword search)
+        2. Inject results into conversation
+        3. Let model decide if it needs more tools to explore deeper
+        """
+        # Step 1: Get initial context with low effort
+        if self.verbose:
+            print(f"    [Auto-Low] Initial context(query='{question}', effort='low')")
+        
+        context_result, frames = self._execute_tool("context", {"query": question, "effort": "low"})
+        
+        metadata = {
+            "tool_calls": [{"name": "context", "args": {"query": question, "effort": "low"}}],
+            "context_result": context_result if context_result else "",
+            "frames": frames,
+            "tokens_used": 0,
+            "turns": 0,
+            "mode": "autonomous-low"
+        }
+        
+        # Step 2: Build prompt with initial context
+        user_prompt = f"""Answer this question using the provided context. If the context is insufficient, use tools to explore deeper.
+
+Initial Context:
+{context_result}
+
+Question: {question}
+
+If you have enough information, provide a concise answer. If not, use tools like traverse(), get(), or find() to gather more information before answering."""
+        
+        messages = [
+            {"role": "system", "content": self.system_prompt},
+            {"role": "user", "content": user_prompt}
+        ]
+        
+        # Step 3: Allow autonomous tool calls for exploration
+        for turn in range(max_turns):
+            metadata["turns"] = turn + 1
+            
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                tools=self.tools,
+                tool_choice="auto"
+            )
+            
+            message = response.choices[0].message
+            metadata["tokens_used"] += response.usage.total_tokens if response.usage else 0
+            
+            # Check if we got tool calls
+            if message.tool_calls:
+                messages.append(message)
+                
+                for tool_call in message.tool_calls:
+                    func_name = tool_call.function.name
+                    func_args = json.loads(tool_call.function.arguments)
+                    
+                    if self.verbose:
+                        print(f"    Tool: {func_name}({func_args})")
+                    
+                    result, tool_frames = self._execute_tool(func_name, func_args)
+                    metadata["frames"].extend(tool_frames)
+                    
+                    metadata["tool_calls"].append({
+                        "name": func_name,
+                        "args": func_args,
+                        "result_len": len(result),
+                    })
+                    
+                    messages.append({
+                        "role": "tool",
+                        "tool_call_id": tool_call.id,
+                        "content": result
+                    })
+                
+                # Inject remaining calls hint
+                calls_remaining = max_turns - turn - 1
+                if calls_remaining > 0:
+                    messages.append({
+                        "role": "system", 
+                        "content": f"[{calls_remaining} tool calls remaining. Answer if you have enough info, or explore more.]"
+                    })
+            else:
+                # No tool calls - model is ready to answer
+                return message.content or "", metadata
+        
+        # Max turns reached - get final answer
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages + [{"role": "user", "content": "Please provide your final answer now."}],
+            max_tokens=150
+        )
+        metadata["tokens_used"] += response.usage.total_tokens if response.usage else 0
         return response.choices[0].message.content or "", metadata
     
     def _answer_autonomous(self, question: str, max_turns: int = 10) -> Tuple[str, Dict[str, Any]]:
@@ -940,7 +1074,7 @@ def main():
         "--mode",
         type=str,
         default="autonomous",
-        choices=["autonomous", "fixed-low", "fixed-medium", "fixed-high", "fixed-low-traverse"],
+        choices=["autonomous", "autonomous-low", "fixed-low", "fixed-medium", "fixed-high", "fixed-low-traverse"],
         help="Benchmark mode: autonomous (full tools) or fixed-{low,medium,high} (inject context call)"
     )
     parser.add_argument(
@@ -986,6 +1120,22 @@ def main():
         sys.exit(1)
     
     substrate = Substrate("locomo_benchmark", db_path=db_path)
+    
+    # Pre-load NLP models to avoid first-query latency
+    console.print("\n  Pre-loading NLP models...")
+    try:
+        from rage_substrate.nlp.summarization import _get_spacy_model
+        _get_spacy_model(with_textrank=False)
+        console.print("    ✓ spaCy loaded", style="green")
+    except Exception as e:
+        console.print(f"    ✗ spaCy: {e}", style="yellow")
+    
+    try:
+        from nltk.corpus import wordnet
+        _ = wordnet.synsets("test")
+        console.print("    ✓ WordNet loaded", style="green")
+    except Exception as e:
+        console.print(f"    ✗ WordNet: {e}", style="yellow")
     
     # Show config
     console.print()

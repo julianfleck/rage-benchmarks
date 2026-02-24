@@ -1,0 +1,39 @@
+03:12:31 [ERROR] Migration failed (add_activation_column): disk I/O error
+03:12:31 [WARNING] Migration check failed: disk I/O error
+03:12:31 [ERROR] Ingestion failed
+Traceback (most recent call last):
+  File "/home/openclaw/.openclaw/workspace/repos/rage-benchmarks/benchmarks/locomo_ingest.py", line 123, in main
+    stats = connector.ingest_conversation(conv, verbose=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/repos/rage-benchmarks/benchmarks/locomo_connector.py", line 238, in ingest_conversation
+    substrate = self._get_substrate()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/repos/rage-benchmarks/benchmarks/locomo_connector.py", line 135, in _get_substrate
+    self._substrate = Substrate("locomo_benchmark", db_path=str(self.db_path))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/repos/rage-substrate/rage_substrate/core/substrate.py", line 780, in __init__
+    self._db = SubstrateDB(db_path)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/repos/rage-substrate/rage_substrate/core/db.py", line 202, in __init__
+    self._init_db()
+  File "/home/openclaw/.openclaw/workspace/repos/rage-substrate/rage_substrate/core/db.py", line 249, in _init_db
+    with self._transaction() as conn:
+  File "/usr/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/repos/rage-substrate/rage_substrate/core/db.py", line 238, in _transaction
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/openclaw/.openclaw/workspace/repos/rage-substrate/rage_substrate/core/db.py", line 229, in _get_connection
+    self._local.connection.execute("PRAGMA journal_mode=WAL")
+sqlite3.OperationalError: disk I/O error
+============================================================
+LoCoMo Ingestion
+============================================================
+Data: data/locomo/locomo10.json
+Database: data/locomo/locomo_substrate.db
+
+Ingesting conversation 0: conv-26
+
+
+❌ Error: disk I/O error

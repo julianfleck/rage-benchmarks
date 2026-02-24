@@ -1,0 +1,165 @@
+─────────────────────── LoCoMo Benchmark ────────────────────────
+
+Loading LoCoMo data...
+  Loaded 1986 QA pairs from 10 conversations
+  Filtered to conversation 0 (conv-26): 199 questions
+  Database: 
+/home/openclaw/.openclaw/workspace/repos/rage-benchmarks/data/loc
+omo/locomo_substrate.db
+
+                                                              
+  Model           openai/gpt-4o                               
+  Mode            fixed-low                                   
+  Batch judging   yes                                         
+  Output          results/low-cutoff-test-20260221-1427.json  
+                                                              
+
+─────────────────────── Running Benchmark ───────────────────────
+
+╭─────────────────────── [1/5] temporal ────────────────────────╮
+│  Query:      When did Caroline go to the LGBTQ support        │
+│              group?                                           │
+│  Frames:     • Caroline Attends LGBTQ Support Group (child    │
+│              of frm_06295d7f...)                              │
+│              • Caroline Joins LGBTQ Activist Group (child of  │
+│              frm_89381898...)                                 │
+│              • Caroline's LGBTQ Art Show (child of            │
+│              frm_3d5e6795...)                                 │
+│              • Caroline's LGBTQ Unity Painting (child of      │
+│              frm_3cc55bbf...)                                 │
+│              • Caroline's LGBTQ Conference Attendance (child  │
+│              of frm_05888742...)                              │
+│              • Caroline: I went to a LGBTQ support group      │
+│              yesterda (child of /locomo/conv...)              │
+│              • Caroline (child of frm_06295d7f...)            │
+│              • Connected LGBTQ Activists (child of            │
+│              frm_e380569d...)                                 │
+│                ... and 7 more                                 │
+│  Metrics:    Judge: pending │ F1: 1.00 │ Latency: 35.7s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: 7 May 2023
+  Got: May 7, 2023
+  Tools: context
+
+╭─────────────────────── [2/5] temporal ────────────────────────╮
+│  Query:      When did Melanie paint a sunrise?                │
+│  Frames:     • Melanie's Lake Sunrise Painting (child of      │
+│              frm_7fc89673...)                                 │
+│              • Melanie: Yeah, I painted that lake sunrise     │
+│              last y. (child of /locomo/conv...)               │
+│              • Melanie: Wow, that's awesome! How did it feel  │
+│              bei. (child of /locomo/conv...)                  │
+│              • Melanie: Wow, looks awesome! Did you join in?  │
+│              (child of /locomo/conv...)                       │
+│              • Melanie: Wow, that's gorgeous! Where did you   │
+│              find. (child of /locomo/conv...)                 │
+│              • Melanie: Wow, did you make that? It looks so   │
+│              real. (child of /locomo/conv...)                 │
+│              • Melanie: Wow, what an experience! How did it   │
+│              make. (child of /locomo/conv...)                 │
+│              • Melanie: That sounds awesome! What did you     │
+│              take a. (child of /locomo/conv...)               │
+│                ... and 7 more                                 │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 6.1s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: 2022
+  Got: Last year
+  Tools: context
+
+╭────────────────────── [3/5] commonsense ──────────────────────╮
+│  Query:      What fields would Caroline be likely to pursue   │
+│              in her educaton?                                 │
+│  Frames:     • Caroline (child of frm_54e917f6...)            │
+│              • Melanie: Woah, Caroline, it sounds like        │
+│              you're do. (child of /locomo/conv...)            │
+│              • Caroline (child of frm_7891cf83...)            │
+│              • Caroline (child of frm_78892aea...)            │
+│              • Melanie: 5 years already! Time flies- feels    │
+│              like . (child of /locomo/conv...)                │
+│              • Caroline's Inspiration from Volunteering       │
+│              (child of frm_7891cf83...)                       │
+│              • Caroline (child of frm_128b4aec...)            │
+│              • Caroline (child of frm_3b3ff576...)            │
+│                ... and 7 more                                 │
+│  Metrics:    Judge: pending │ F1: 0.40 │ Latency: 8.8s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Psychology, counseling certification
+  Got: Counseling, Art
+  Tools: context
+
+╭────────────────────── [4/5] single-hop ───────────────────────╮
+│  Query:      What did Caroline research?                      │
+│  Frames:     • Caroline Dad                                   │
+│              • Melanie: Wow, Caroline! That's huge! How did   │
+│              it f. (child of /locomo/conv...)                 │
+│              • Caroline: Cool! What did it look like? (child  │
+│              of /locomo/conv...)                              │
+│              • Caroline: Wow! Did you see that band? (child   │
+│              of /locomo/conv...)                              │
+│              • Caroline: Whoa, Mel, that sign looks serious.  │
+│              Did  (child of /locomo/conv...)                  │
+│              • Caroline: Researching adoption agencies —      │
+│              it's bee (child of /locomo/conv...)              │
+│              • Caroline: Yep! Do your research and find an    │
+│              adopti (child of /locomo/conv...)                │
+│              • Caroline (child of frm_e3a95aa0...)            │
+│                ... and 7 more                                 │
+│  Metrics:    Judge: pending │ F1: 1.00 │ Latency: 3.4s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Adoption agencies
+  Got: Adoption agencies
+  Tools: context
+
+╭────────────────────── [5/5] single-hop ───────────────────────╮
+│  Query:      What is Caroline's identity?                     │
+│  Frames:     • Caroline's Self-Portrait (child of             │
+│              frm_0e7bb7a0...)                                 │
+│              • Caroline's Trans Journey Painting (child of    │
+│              frm_9e2445d2...)                                 │
+│              • Caroline (child of frm_7891cf83...)            │
+│              • Caroline's Painting (child of                  │
+│              frm_82a8dd22...)                                 │
+│              • Caroline's School Event Speech (child of       │
+│              frm_522cde38...)                                 │
+│              • Caroline's LGBTQ Unity Painting (child of      │
+│              frm_3cc55bbf...)                                 │
+│              • Caroline's Sunset Painting (child of           │
+│              frm_e3211fb0...)                                 │
+│              • Caroline (child of frm_128b4aec...)            │
+│                ... and 7 more                                 │
+│  Metrics:    Judge: pending │ F1: 0.50 │ Latency: 3.3s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Transgender woman
+  Got: Trans woman
+  Tools: context
+
+
+─────────────────────── LLM Judging Phase ───────────────────────
+  Judging... (4/5 correct) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
+✓ Judging complete: 4/5 correct (80.0%)
+
+─────────────────── LoCoMo Benchmark Results ────────────────────
+
+  Model        openai/gpt-4o  
+  Mode         fixed-low      
+  Questions    5              
+
+               Results by Category                
+╭─────────────┬───────┬────────┬────────┬────────╮
+│ Category    │ Count │ Avg F1 │ Avg EM │  LLM % │
+├─────────────┼───────┼────────┼────────┼────────┤
+│ single-hop  │     2 │  0.750 │  0.500 │ 100.0% │
+│ temporal    │     2 │  0.500 │  0.000 │ 100.0% │
+│ commonsense │     1 │  0.400 │  0.000 │   0.0% │
+├─────────────┼───────┼────────┼────────┼────────┤
+│ OVERALL     │     5 │  0.580 │  0.200 │  80.0% │
+╰─────────────┴───────┴────────┴────────┴────────╯
+
+╔═══════════════════════════════════════════════════════════════╗
+║ 🎯 LLM Judge Score: 80.0%                                     ║
+║ (comparable to MemU, MemMachine, etc.)                        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+✓ Results saved to: results/low-cutoff-test-20260221-1427.json
+
+✓ Benchmark complete!

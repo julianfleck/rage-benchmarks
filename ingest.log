@@ -1,0 +1,1002 @@
+03:14:45 [INFO] Applying migration: create_schema_version_table
+03:14:45 [INFO] ✓ Applied: create_schema_version_table
+03:14:45 [INFO] Applying migration: create_sessions_table
+03:14:45 [INFO] ✓ Applied: create_sessions_table
+03:14:45 [INFO] Applying migration: create_frame_memberships_table
+03:14:45 [INFO] ✓ Applied: create_frame_memberships_table
+03:14:45 [INFO] Applying migration: create_frame_history_table
+03:14:45 [INFO] ✓ Applied: create_frame_history_table
+03:14:45 [INFO] Applying migration: create_aliases_table
+03:14:45 [INFO] ✓ Applied: create_aliases_table
+03:14:45 [INFO] Applying migration: create_embedding_tasks_table
+03:14:45 [INFO] ✓ Applied: create_embedding_tasks_table
+03:14:45 [INFO] Applying migration: add_created_at_index
+03:14:45 [ERROR] Migration failed (add_created_at_index): no such table: main.frames
+03:14:45 [WARNING] Migration check failed: no such table: main.frames
+03:14:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:01 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:01 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:13 [INFO] Auto-seeded registry with 47 default types
+03:15:13 [INFO] [BATCH] Creating 18 message frames
+03:15:14 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:14 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:14 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:26 [INFO] [BATCH] Created 18 message frames
+03:15:26 [INFO] [BATCH] Segmented 18 items into 1 windows
+03:15:26 [INFO] [BATCH] Processing window 1/1 (18 messages, ~525 tokens)
+03:15:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:31 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:43 [INFO] [BATCH] Created frame type: person
+03:15:43 [INFO] [BATCH] Created frame type: goal
+03:15:43 [INFO] [BATCH] Created frame type: occupation
+03:15:43 [INFO] [BATCH] Created frame type: artistic_activity
+03:15:43 [INFO] [BATCH] Created frame type: feeling
+03:15:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:45 [INFO] [BATCH] Window 1: extracted 8 semantic frames
+03:15:45 [INFO] [BATCH] Updated co-occurrence index with 26 frames
+============================================================
+LoCoMo Ingestion
+============================================================
+Data: data/locomo/locomo10.json
+Database: data/locomo/locomo_substrate.db
+
+Ingesting conversation 0: conv-26
+
+  Session 1: 18 messages → 26 frames
+03:15:45 [INFO] [BATCH] Creating 17 message frames
+03:15:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:15:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:58 [INFO] [BATCH] Created 17 message frames
+03:15:58 [INFO] [BATCH] Segmented 17 items into 1 windows
+03:15:58 [INFO] [BATCH] Processing window 1/1 (17 messages, ~749 tokens)
+03:15:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:15:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:14 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:16 [INFO] [BATCH] Created frame type: organization
+03:16:16 [INFO] [BATCH] Created frame type: decision
+03:16:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:18 [INFO] [BATCH] Window 1: extracted 6 semantic frames
+03:16:18 [INFO] [BATCH] Updated co-occurrence index with 23 frames
+  Session 2: 17 messages → 23 frames
+03:16:18 [INFO] Session 3 already ingested, skipping
+  Session 3 already ingested, skipping
+03:16:18 [INFO] [BATCH] Creating 18 message frames
+03:16:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:31 [INFO] [BATCH] Created 18 message frames
+03:16:31 [INFO] [BATCH] Segmented 18 items into 1 windows
+03:16:31 [INFO] [BATCH] Processing window 1/1 (18 messages, ~876 tokens)
+03:16:31 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:31 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:40 [INFO] [BATCH] Created frame type: object
+03:16:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:41 [INFO] Created person frame: /persons/melanie-family
+03:16:41 [INFO] Auto-created person frame: /persons/melanie-family
+03:16:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:42 [INFO] [BATCH] Window 1: extracted 8 semantic frames
+03:16:42 [INFO] [BATCH] Updated co-occurrence index with 26 frames
+  Session 4: 18 messages → 26 frames
+03:16:42 [INFO] [BATCH] Creating 16 message frames
+03:16:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:55 [INFO] [BATCH] Created 16 message frames
+03:16:55 [INFO] [BATCH] Segmented 16 items into 1 windows
+03:16:55 [INFO] [BATCH] Processing window 1/1 (16 messages, ~633 tokens)
+03:16:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:16:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:16:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:09 [INFO] [BATCH] Created frame type: activity
+03:17:09 [INFO] [BATCH] Created frame type: product
+03:17:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:11 [INFO] [BATCH] Window 1: extracted 8 semantic frames
+03:17:12 [INFO] [BATCH] Updated co-occurrence index with 24 frames
+  Session 5: 16 messages → 24 frames
+03:17:12 [INFO] Session 6 already ingested, skipping
+  Session 6 already ingested, skipping
+03:17:12 [INFO] [BATCH] Creating 27 message frames
+03:17:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:36 [INFO] [BATCH] Created 27 message frames
+03:17:36 [INFO] [BATCH] Segmented 27 items into 1 windows
+03:17:36 [INFO] [BATCH] Processing window 1/1 (27 messages, ~1104 tokens)
+03:17:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:50 [INFO] [BATCH] Created frame type: book
+03:17:50 [INFO] [BATCH] Created frame type: pet
+03:17:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:52 [INFO] Created person frame: /persons/amy-ellis-nutt
+03:17:52 [INFO] Auto-created person frame: /persons/amy-ellis-nutt
+03:17:52 [INFO] [BATCH] Window 1: extracted 8 semantic frames
+03:17:52 [INFO] [BATCH] Updated co-occurrence index with 35 frames
+  Session 7: 27 messages → 35 frames
+03:17:52 [INFO] [BATCH] Creating 39 message frames
+03:17:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:17:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:17:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:01 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:25 [INFO] [BATCH] Created 39 message frames
+03:18:25 [INFO] [BATCH] Segmented 39 items into 3 windows
+03:18:25 [INFO] [BATCH] Processing window 1/3 (30 messages, ~1120 tokens)
+03:18:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:36 [INFO] Created person frame: /persons/melanie-1
+03:18:36 [INFO] Auto-created person frame: /persons/melanie-1
+03:18:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:37 [INFO] Created person frame: /persons/caroline-1
+03:18:37 [INFO] Auto-created person frame: /persons/caroline-1
+03:18:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:37 [INFO] [BATCH] Window 1: extracted 8 semantic frames
+03:18:37 [INFO] [BATCH] Processing window 2/3 (30 messages, ~1045 tokens)
+03:18:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:18:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:18:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:00 [INFO] [BATCH] Created frame type: emotion
+03:19:00 [INFO] [BATCH] Created frame type: discussion
+03:19:00 [INFO] [BATCH] Created frame type: relationship
+03:19:00 [INFO] [BATCH] Created frame type: place
+03:19:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:01 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:01 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:08 [INFO] Created person frame: /persons/melanie-1s-family
+03:19:08 [INFO] Auto-created person frame: /persons/melanie-1s-family
+03:19:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:09 [INFO] [BATCH] Window 2: extracted 15 semantic frames
+03:19:09 [INFO] [BATCH] Processing window 3/3 (26 messages, ~824 tokens)
+03:19:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:18 [INFO] [BATCH] Window 3: extracted 7 semantic frames
+03:19:19 [INFO] [BATCH] Updated co-occurrence index with 69 frames
+  Session 8: 39 messages → 69 frames
+03:19:19 [INFO] Session 9 already ingested, skipping
+  Session 9 already ingested, skipping
+03:19:19 [INFO] [BATCH] Creating 24 message frames
+03:19:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:38 [INFO] [BATCH] Created 24 message frames
+03:19:38 [INFO] [BATCH] Segmented 24 items into 1 windows
+03:19:38 [INFO] [BATCH] Processing window 1/1 (24 messages, ~1040 tokens)
+03:19:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:19:56 [INFO] [BATCH] Created frame type: family_activity
+03:19:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:19:59 [INFO] [BATCH] Window 1: extracted 15 semantic frames
+03:20:00 [INFO] [BATCH] Updated co-occurrence index with 39 frames
+  Session 10: 24 messages → 39 frames
+03:20:00 [INFO] [BATCH] Creating 17 message frames
+03:20:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:14 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:14 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:19 [INFO] [BATCH] Created 17 message frames
+03:20:19 [INFO] [BATCH] Segmented 17 items into 1 windows
+03:20:19 [INFO] [BATCH] Processing window 1/1 (17 messages, ~802 tokens)
+03:20:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:29 [INFO] [BATCH] Created frame type: art
+03:20:29 [INFO] [BATCH] Window 1: extracted 0 semantic frames
+03:20:29 [INFO] [BATCH] Updated co-occurrence index with 17 frames
+  Session 11: 17 messages → 17 frames
+03:20:29 [INFO] [BATCH] Creating 21 message frames
+03:20:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:31 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:46 [INFO] [BATCH] Created 21 message frames
+03:20:46 [INFO] [BATCH] Segmented 21 items into 1 windows
+03:20:46 [INFO] [BATCH] Processing window 1/1 (21 messages, ~835 tokens)
+03:20:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:20:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:20:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:01 [INFO] [BATCH] Created frame type: social_interaction
+03:21:01 [INFO] [BATCH] Created frame type: project
+03:21:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:03 [INFO] [BATCH] Window 1: extracted 9 semantic frames
+03:21:04 [INFO] [BATCH] Updated co-occurrence index with 30 frames
+  Session 12: 21 messages → 30 frames
+03:21:04 [INFO] [BATCH] Creating 18 message frames
+03:21:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:14 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:21 [INFO] [BATCH] Created 18 message frames
+03:21:21 [INFO] [BATCH] Segmented 18 items into 1 windows
+03:21:21 [INFO] [BATCH] Processing window 1/1 (18 messages, ~760 tokens)
+03:21:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:34 [INFO] Created person frame: /persons/carolines-dad
+03:21:34 [INFO] Auto-created person frame: /persons/carolines-dad
+03:21:34 [INFO] [BATCH] Window 1: extracted 11 semantic frames
+03:21:35 [INFO] [BATCH] Updated co-occurrence index with 29 frames
+  Session 13: 18 messages → 29 frames
+03:21:35 [INFO] [BATCH] Creating 35 message frames
+03:21:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:21:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:21:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:00 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:05 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:06 [INFO] [BATCH] Created 35 message frames
+03:22:06 [INFO] [BATCH] Segmented 35 items into 2 windows
+03:22:06 [INFO] [BATCH] Processing window 1/2 (30 messages, ~1256 tokens)
+03:22:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:27 [INFO] [BATCH] Window 1: extracted 15 semantic frames
+03:22:27 [INFO] [BATCH] Processing window 2/2 (25 messages, ~955 tokens)
+03:22:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:31 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:31 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:37 [INFO] [BATCH] Created frame type: art_project
+03:22:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:39 [INFO] [BATCH] Window 2: extracted 8 semantic frames
+03:22:39 [INFO] [BATCH] Updated co-occurrence index with 58 frames
+  Session 14: 35 messages → 58 frames
+03:22:40 [INFO] [BATCH] Creating 28 message frames
+03:22:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:56 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:22:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:22:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:10 [INFO] [BATCH] Created 28 message frames
+03:23:10 [INFO] [BATCH] Segmented 28 items into 1 windows
+03:23:10 [INFO] [BATCH] Processing window 1/1 (28 messages, ~1116 tokens)
+03:23:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:27 [INFO] [BATCH] Created frame type: musical_instrument
+03:23:27 [INFO] [BATCH] Created frame type: song
+03:23:27 [INFO] [BATCH] Created frame type: community_service
+03:23:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:28 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:29 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:29 [INFO] [BATCH] Window 1: extracted 11 semantic frames
+03:23:30 [INFO] [BATCH] Updated co-occurrence index with 39 frames
+  Session 15: 28 messages → 39 frames
+03:23:30 [INFO] [BATCH] Creating 20 message frames
+03:23:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:35 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:45 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:47 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:48 [INFO] [BATCH] Created 20 message frames
+03:23:48 [INFO] [BATCH] Segmented 20 items into 1 windows
+03:23:48 [INFO] [BATCH] Processing window 1/1 (20 messages, ~1047 tokens)
+03:23:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:49 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:50 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:23:58 [INFO] [BATCH] Created frame type: artwork
+03:23:58 [INFO] [BATCH] Window 1: extracted 0 semantic frames
+03:23:58 [INFO] [BATCH] Updated co-occurrence index with 20 frames
+  Session 16: 20 messages → 20 frames
+03:23:58 [INFO] [BATCH] Creating 26 message frames
+03:23:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:23:59 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:01 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:02 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:03 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:22 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:22 [INFO] [BATCH] Created 26 message frames
+03:24:22 [INFO] [BATCH] Segmented 26 items into 1 windows
+03:24:22 [INFO] [BATCH] Processing window 1/1 (26 messages, ~1144 tokens)
+03:24:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:29 [INFO] [BATCH] Window 1: extracted 0 semantic frames
+03:24:30 [INFO] [BATCH] Updated co-occurrence index with 26 frames
+  Session 17: 26 messages → 26 frames
+03:24:30 [INFO] [BATCH] Creating 24 message frames
+03:24:30 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:32 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:33 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:46 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:48 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:51 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:52 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:53 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:53 [INFO] [BATCH] Created 24 message frames
+03:24:53 [INFO] [BATCH] Segmented 24 items into 1 windows
+03:24:53 [INFO] [BATCH] Processing window 1/1 (24 messages, ~852 tokens)
+03:24:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:54 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:55 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:24:57 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:24:58 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:07 [INFO] [BATCH] Created frame type: family_member
+03:25:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:08 [INFO] Created person frame: /persons/melanie-son-1
+03:25:08 [INFO] Auto-created person frame: /persons/melanie-son-1
+03:25:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:09 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:11 [INFO] [BATCH] Window 1: extracted 16 semantic frames
+03:25:11 [INFO] [BATCH] Updated co-occurrence index with 40 frames
+  Session 18: 24 messages → 40 frames
+03:25:11 [INFO] [BATCH] Creating 15 message frames
+03:25:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:18 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:21 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:25 [INFO] [BATCH] Created 15 message frames
+03:25:25 [INFO] [BATCH] Segmented 15 items into 1 windows
+03:25:25 [INFO] [BATCH] Processing window 1/1 (15 messages, ~703 tokens)
+03:25:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:34 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:25:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:36 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:37 [INFO] [BATCH] Window 1: extracted 6 semantic frames
+03:25:37 [INFO] [BATCH] Updated co-occurrence index with 21 frames
+  Session 19: 15 messages → 21 frames
+03:25:37 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:38 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:39 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:40 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:41 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:42 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:43 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:25:44 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+
+✓ Ingested conv-26
+  Sessions: 16
+  Messages: 363
+  Frames: 522
+
+Generating embeddings...
+  839 frames need embeddings
+  ✓ Generated 749 embeddings
+
+============================================================
+✓ Complete in 659.7s
+============================================================

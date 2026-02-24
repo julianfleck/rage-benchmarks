@@ -1,0 +1,46 @@
+03:14:02 [INFO] Session 1 already ingested, skipping
+============================================================
+LoCoMo Ingestion
+============================================================
+Data: data/locomo/locomo10.json
+Database: data/locomo/locomo_substrate.db
+
+Ingesting conversation 0: conv-26
+
+  Session 1 already ingested, skipping
+03:14:02 [INFO] [BATCH] Creating 17 message frames
+03:14:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:04 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:06 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:14:07 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:08 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:10 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:14:11 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:12 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:13 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:14:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:15 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:16 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:17 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:14:18 [INFO] [BATCH] Created 17 message frames
+03:14:18 [INFO] [BATCH] Segmented 17 items into 1 windows
+03:14:18 [INFO] [BATCH] Processing window 1/1 (17 messages, ~749 tokens)
+03:14:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:14:19 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:20 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:14:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:23 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:24 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:25 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+03:14:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:26 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+03:14:27 [INFO] HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"

@@ -9,6 +9,12 @@ Modeled after OpenClaw connector pattern:
 LoCoMo is a long-context conversation memory benchmark with multi-session
 dialogues and QA pairs testing temporal reasoning, causal connections, and
 long-term memory retention.
+
+TODO (2026-02-24): Update to use new v2 ingestion pipeline
+- Replace ingest_batch() with ingest_conversation() 
+- New API: ingest_conversation(messages, source, session_id, db)
+- messages format: [{"id": "...", "author": "...", "content": "...", "timestamp": "..."}]
+- See rage_substrate/ingestion/pipeline.py for details
 """
 
 import sys

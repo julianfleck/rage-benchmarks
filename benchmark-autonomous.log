@@ -1,0 +1,198 @@
+─────────────────────── LoCoMo Benchmark ────────────────────────
+
+Loading LoCoMo data...
+  Loaded 1986 QA pairs from 10 conversations
+  Filtered to conversation 0 (conv-26): 199 questions
+  Database: 
+/home/openclaw/.openclaw/workspace/repos/rage-benchmarks/data/loc
+omo/locomo_substrate.db
+
+                                                         
+  Model           openai/gpt-4o                          
+  Mode            autonomous                             
+  Batch judging   yes                                    
+  Output          results/autonomous-20260221-1409.json  
+                                                         
+
+─────────────────────── Running Benchmark ───────────────────────
+
+╭────────────────────── [1/199] temporal ───────────────────────╮
+│  Query:      When did Caroline go to the LGBTQ support        │
+│              group?                                           │
+│  Context:    [auto] Caroline LGBTQ support group              │
+│  Metrics:    Judge: pending │ F1: 1.00 │ Latency: 27.3s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: 7 May 2023
+  Got: 7 May 2023
+  Tools: context
+
+╭────────────────────── [2/199] temporal ───────────────────────╮
+│  Query:      When did Melanie paint a sunrise?                │
+│  Context:    [auto] Melanie paint a sunrise                   │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 81.8s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: 2022
+  Got: No information available.
+  Tools: context → find
+
+╭───────────────────── [3/199] commonsense ─────────────────────╮
+│  Query:      What fields would Caroline be likely to pursue   │
+│              in her educaton?                                 │
+│  Context:    [auto] Caroline education interests              │
+│  Metrics:    Judge: pending │ F1: 0.29 │ Latency: 4.9s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Psychology, counseling certification
+  Got: Counseling or mental health.
+  Tools: context
+
+╭───────────────────── [4/199] single-hop ──────────────────────╮
+│  Query:      What did Caroline research?                      │
+│  Context:    [auto] Caroline research                         │
+│  Metrics:    Judge: pending │ F1: 0.80 │ Latency: 4.3s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Adoption agencies
+  Got: Researching adoption agencies
+  Tools: context
+
+╭───────────────────── [5/199] single-hop ──────────────────────╮
+│  Query:      What is Caroline's identity?                     │
+│  Context:    [auto] Caroline's identity                       │
+│  Metrics:    Judge: pending │ F1: 0.50 │ Latency: 4.1s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Transgender woman
+  Got: Trans woman
+  Tools: context
+
+╭────────────────────── [6/199] temporal ───────────────────────╮
+│  Query:      When did Melanie run a charity race?             │
+│  Context:    [auto] Melanie run a charity race                │
+│  Metrics:    Judge: pending │ F1: 0.50 │ Latency: 14.2s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: The sunday before 25 May 2023
+  Got: 20 May 2023
+  Tools: context
+
+╭────────────────────── [7/199] temporal ───────────────────────╮
+│  Query:      When is Melanie planning on going camping?       │
+│  Context:    [auto] Melanie camping                           │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 4.2s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: June 2023
+  Got: Not mentioned
+  Tools: context
+
+╭───────────────────── [8/199] single-hop ──────────────────────╮
+│  Query:      What is Caroline's relationship status?          │
+│  Context:    [auto] Caroline's relationship status            │
+│  Metrics:    Judge: pending │ F1: 0.67 │ Latency: 4.1s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Single
+  Got: Single parent
+  Tools: context
+
+╭────────────────────── [9/199] temporal ───────────────────────╮
+│  Query:      When did Caroline give a speech at a school?     │
+│  Context:    [auto] Caroline speech school                    │
+│  Metrics:    Judge: pending │ F1: 0.50 │ Latency: 2.6s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: The week before 9 June 2023
+  Got: 2 June 2023
+  Tools: context
+
+╭────────────────────── [10/199] temporal ──────────────────────╮
+│  Query:      When did Caroline meet up with her friends,      │
+│              family, and mentors?                             │
+│  Context:    [auto] Caroline meet up with her friends,        │
+│              family, and mentors                              │
+│  Metrics:    Judge: pending │ F1: 0.50 │ Latency: 19.6s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: The week before 9 June 2023
+  Got: Early June 2023
+  Tools: context
+
+╭────────────────────── [11/199] temporal ──────────────────────╮
+│  Query:      How long has Caroline had her current group of   │
+│              friends for?                                     │
+│  Context:    [auto] Caroline current group of friends         │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 11.0s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: 4 years
+  Got: Since July 2023
+  Tools: context
+
+╭───────────────────── [12/199] single-hop ─────────────────────╮
+│  Query:      Where did Caroline move from 4 years ago?        │
+│  Context:    [auto] Caroline moved from                       │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 4.7s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Sweden
+  Got: Home country
+  Tools: context
+
+╭────────────────────── [13/199] temporal ──────────────────────╮
+│  Query:      How long ago was Caroline's 18th birthday?       │
+│  Context:    [auto] Caroline's 18th birthday                  │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 12.0s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: 10 years ago
+  Got: No data available.
+  Tools: context
+
+╭───────────────────── [14/199] single-hop ─────────────────────╮
+│  Query:      What career path has Caroline decided to         │
+│              persue?                                          │
+│  Context:    [auto] Caroline decision career path             │
+│  Metrics:    Judge: pending │ F1: 0.73 │ Latency: 5.3s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: counseling or mental health for Transgender people
+  Got: Counseling or mental health.
+  Tools: context
+
+╭──────────────────── [15/199] commonsense ─────────────────────╮
+│  Query:      Would Caroline still want to pursue counseling   │
+│              as a career if she h...                          │
+│  Context:    [low] Caroline pursue counseling career without  │
+│              support                                          │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 2.1s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: Likely no
+  Got: Caroline's interest in counseling appears intrinsic.
+  Tools: context
+
+╭───────────────────── [16/199] single-hop ─────────────────────╮
+│  Query:      What activities does Melanie partake in?         │
+│  Context:    [auto] activities Melanie partakes in            │
+│  Metrics:    Judge: pending │ F1: 0.25 │ Latency: 8.8s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: pottery, camping, painting, swimming
+  Got: Creative activities, hiking, camping.
+  Tools: context
+
+╭────────────────────── [17/199] temporal ──────────────────────╮
+│  Query:      When did Melanie sign up for a pottery class?    │
+│  Context:    [auto] Melanie pottery class sign up             │
+│  Metrics:    Judge: pending │ F1: 0.33 │ Latency: 2.2s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: 2 July 2023
+  Got: 25 August 2023
+  Tools: context
+
+╭────────────────────── [18/199] temporal ──────────────────────╮
+│  Query:      When is Caroline going to the transgender        │
+│              conference?                                      │
+│  Context:    [auto] Caroline transgender conference           │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 11.0s       │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: July 2023
+  Got: Not found.
+  Tools: context
+
+╭───────────────────── [19/199] single-hop ─────────────────────╮
+│  Query:      Where has Melanie camped?                        │
+│  Context:    [auto] Melanie camped                            │
+│  Metrics:    Judge: pending │ F1: 0.00 │ Latency: 6.4s        │
+╰───────────────────────────────────────────────────────────────╯
+  Expected: beach, mountains, forest
+  Got: Not specified.
+  Tools: context → find
+

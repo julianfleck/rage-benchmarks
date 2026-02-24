@@ -1,0 +1,39 @@
+
+Re-judging 199 questions from locomo_benchmark_20260220_180106.json
+  Found 47 adversarial, 152 normal questions
+  Re-judging... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
+
+────────────────────────────────────────────── Re-judge Results ───────────────────────────────────────────────
+
+Score Changes:
+  Overall: 55/199 → 62/199 (27.6% → 31.2%)
+  Adversarial (47): 12 → 18 (25.5% → 38.3%)
+  Normal (152): 43 → 44 (28.3% → 28.9%)
+
+31 questions changed score:
+  ✓ When is Caroline going to the transgender conference?... (0 → 1)
+  ✗ When is Caroline's youth center putting on a talent show?... (1 → 0)
+  ✓ When did Caroline pass the adoption interview?... (0 → 1)
+  ✗  What did Caroline realize after her charity race?... (1 → 0)
+  ✓  What are Melanie's plans for the summer with respect to adop... (0 → 1)
+  ✗  What type of individuals does the adoption agency Melanie is... (1 → 0)
+  ✓  Why did Melanie choose the adoption agency?... (0 → 1)
+  ✓  What is Melanie excited about in her adoption process?... (0 → 1)
+  ✗  What does Melanie's necklace symbolize?... (1 → 0)
+  ✓  What country is Melanie's grandma from?... (0 → 1)
+  ... and 21 more
+
+      Results by Category      
+╭─────────────┬───────┬───────╮
+│ Category    │ Count │ LLM % │
+├─────────────┼───────┼───────┤
+│ single-hop  │    32 │ 12.5% │
+│ temporal    │    37 │ 32.4% │
+│ commonsense │    13 │ 15.4% │
+│ multi-hop   │    70 │ 37.1% │
+│ adversarial │    47 │ 38.3% │
+├─────────────┼───────┼───────┤
+│ OVERALL     │   199 │ 31.2% │
+╰─────────────┴───────┴───────╯
+
+✓ Saved to: results/locomo_rejudged.json
